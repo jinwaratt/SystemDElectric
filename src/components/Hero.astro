@@ -1,0 +1,89 @@
+---
+import { site } from "../data/site";
+
+const checks = [
+  "วิศวกร กว. ควบคุมงานตามมาตรฐาน วสท. / IEEE",
+  "สถานีไฟฟ้าย่อย หม้อแปลง และระบบส่งจ่ายแรงสูง",
+  "ประกอบ ติดตั้ง และบำรุงรักษาตู้สวิตช์บอร์ด MDB / DB",
+  "ตรวจรับรองความปลอดภัยประจำปีและ As-Built ครบวงจร",
+];
+---
+
+<section class="relative w-full overflow-hidden bg-surface pb-space-xl" id="home">
+  <div
+    class="absolute inset-0 bg-[radial-gradient(#1b7a3e_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none"
+  >
+  </div>
+  <div class="max-w-[1280px] mx-auto px-gutter py-space-xl relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+      <div class="lg:col-span-7 flex flex-col items-start gap-space-md">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm tracking-wider uppercase shadow-sm"
+        >
+          <span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+          <span>SYSTEM ELECTRICAL • ผู้นำงานวิศวกรรมไฟฟ้าอุตสาหกรรม</span>
+        </div>
+        <h1
+          class="font-headline-xl text-headline-xl-mobile lg:text-headline-xl text-on-surface tracking-tight leading-tight"
+        >
+          รับออกแบบและติดตั้ง
+          <br />
+          <span class="text-primary">ระบบไฟฟ้าครบวงจร</span>
+          <span class="block text-secondary-container">แรงต่ำ–แรงสูง</span>
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+          บริการครอบคลุมสำหรับโรงงานอุตสาหกรรม อาคารขนาดใหญ่ และคลังสินค้า โดยทีมวิศวกรผู้เชี่ยวชาญพร้อมใบ กว.
+          ควบคุมงานตามมาตรฐาน วสท. และการไฟฟ้าฯ
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 w-full my-space-sm pt-space-xs pb-space-sm">
+          {
+            checks.map((item) => (
+              <div class="flex items-center gap-2.5">
+                <span class="material-symbols-outlined text-primary text-[20px] shrink-0 font-bold">
+                  check_circle
+                </span>
+                <span class="font-label-md text-label-md text-on-surface">{item}</span>
+              </div>
+            ))
+          }
+        </div>
+        <div class="flex flex-wrap items-center gap-space-md w-full pt-space-xs">
+          <a
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-primary hover:bg-tertiary text-on-primary font-label-lg text-label-lg transition-all shadow-md active:scale-[0.98]"
+            href={`tel:${site.phoneTel}`}
+          >
+            <span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+            <span>โทรปรึกษาวิศวกร (ฟรี)</span>
+          </a>
+        </div>
+      </div>
+      <div class="lg:col-span-5 relative w-full mt-8 lg:mt-0">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-surface-container-high">
+          <img
+            alt="ทีมวิศวกรไฟฟ้าควบคุมตู้สวิตช์บอร์ด MDB โรงงานอุตสาหกรรม"
+            class="w-full h-auto aspect-[4/3] object-cover transition-transform duration-700 hover:scale-105"
+            src="/images/hero.jpg"
+            width="960"
+            height="720"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div
+            class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-surface/95 backdrop-blur-md shadow-lg flex flex-col gap-2"
+          >
+            <span
+              class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold uppercase self-start"
+            >
+              <span class="material-symbols-outlined text-[16px] text-primary">bolt</span>
+              วิศวกร กว. ระดับสามัญ
+            </span>
+            <p class="font-headline-sm text-headline-sm text-on-surface">มาตรฐานความปลอดภัย 100%</p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+              ให้บริการและส่งมอบแล้วกว่า 500+ โครงการทั่วไทย
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

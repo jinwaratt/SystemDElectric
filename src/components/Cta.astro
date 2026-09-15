@@ -1,0 +1,45 @@
+---
+import { site } from "../data/site";
+---
+
+<section class="w-full bg-surface-container-low py-space-xl" id="contact">
+  <div class="max-w-[1280px] mx-auto px-gutter">
+    <div
+      class="p-8 sm:p-12 rounded-2xl bg-surface shadow-md border border-outline-variant flex flex-col lg:flex-row items-center justify-between gap-8"
+    >
+      <div class="flex flex-col max-w-2xl">
+        <span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider mb-2">
+          ENGINEERING CONSULTATION & QUOTATION
+        </span>
+        <h2
+          class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface tracking-tight leading-tight mb-3"
+        >
+          ประเภทงานของเรารองรับทุกความต้องการด้านระบบไฟฟ้า
+        </h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">
+          ทีมวิศวกรพร้อมให้คำปรึกษาการออกแบบ วางสเปก Single Line Diagram และจัดทำ BOQ โปร่งใส
+          ส่งข้อเสนอภายใน 24 ชั่วโมง
+        </p>
+        <div class="flex flex-wrap items-center gap-6 mt-4 text-on-surface font-label-md text-label-md">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">verified</span>
+            <span>วิศวกร กว. ควบคุมทุกโครงการ</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+            <span>ตอบกลับรวดเร็วภายใน 24 ชม.</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0 w-full sm:w-auto">
+        <a
+          class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-secondary-container hover:bg-secondary text-on-secondary font-label-lg text-label-lg transition-all shadow-sm hover:shadow-md active:scale-[0.98] text-center"
+          href={`tel:${site.phoneTel}`}
+        >
+          <span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+          <span>โทรปรึกษาวิศวกรด่วน</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

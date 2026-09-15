@@ -1,0 +1,65 @@
+---
+const stats = [
+  { value: "20+", label: "ปีประสบการณ์", detail: "ในวงการวิศวกรรม", accent: false },
+  { value: "100+", label: "โครงการใหญ่", detail: "ส่งมอบตามงบ", accent: false },
+  { value: "50+", label: "ทีมวิศวกร", detail: "และช่างชำนาญการ", accent: false },
+  { value: "100%", label: "ทั่วประเทศ", detail: "ครอบคลุมทุกนิคมฯ", accent: true },
+];
+
+const reasons = [
+  { text: "วิศวกรมีใบประกอบวิชาชีพ กว. ควบคุมและเซ็นรับรองทุกไซต์งาน", accent: false },
+  { text: "ใช้อุปกรณ์เกรดอุตสาหกรรมแท้ 100% มาตรฐานระดับโลก", accent: false },
+  { text: "ส่งมอบงานตรงเวลา พร้อมรับประกันผลงานการติดตั้ง 1-2 ปีเต็ม", accent: false },
+  { text: "มีทีมดูแลฉุกเฉิน 24/7 เพื่อให้สายการผลิตของท่านไม่สะดุด", accent: true },
+];
+---
+
+<section class="w-full bg-surface py-space-xl" id="about">
+  <div class="max-w-[1280px] mx-auto px-gutter">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-6">
+        {
+          stats.map((stat) => (
+            <div class="flex flex-col pl-3 border-l-2 border-secondary-container">
+              <span
+                class:list={[
+                  "font-headline-xl text-headline-xl-mobile lg:text-headline-xl font-bold",
+                  stat.accent ? "text-secondary-container" : "text-primary",
+                ]}
+              >
+                {stat.value}
+              </span>
+              <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mt-1">
+                {stat.label}
+              </span>
+              <span class="font-body-sm text-body-sm text-on-surface font-semibold">{stat.detail}</span>
+            </div>
+          ))
+        }
+      </div>
+      <div class="lg:col-span-5 p-6 rounded-2xl bg-surface-container shadow-sm flex flex-col gap-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-[24px]">verified_user</span>
+          <h3 class="font-headline-sm text-headline-sm text-on-surface">ทำไมต้องเลือก System Electrical?</h3>
+        </div>
+        <ul class="flex flex-col gap-2.5 font-body-sm text-body-sm text-on-surface">
+          {
+            reasons.map((reason) => (
+              <li class="flex items-start gap-2">
+                <span
+                  class:list={[
+                    "material-symbols-outlined text-[18px] shrink-0 font-bold",
+                    reason.accent ? "text-secondary-container" : "text-primary",
+                  ]}
+                >
+                  check
+                </span>
+                <span>{reason.text}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

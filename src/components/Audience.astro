@@ -1,0 +1,93 @@
+---
+const audiences = [
+  {
+    image: "/images/audience-factory.jpg",
+    eyebrow: "นิคมอุตสาหกรรม",
+    title: "โรงงานอุตสาหกรรม",
+    body: "นิคมฯ อมตะซิตี้, บางปู, มาบตาพุด, ระยอง สำหรับสายการผลิตที่ไม่สามารถหยุดชะงักได้",
+    overlay: "bg-primary/20",
+    alt: "โรงงานอุตสาหกรรมพร้อมระบบไฟฟ้าและรางเคเบิล",
+  },
+  {
+    image: "/images/audience-office.jpg",
+    eyebrow: "อาคารสูง / HQ",
+    title: "อาคารสำนักงาน",
+    body: "Corporate Office Buildings ระบบสำรองไฟ UPS และระบบแสงสว่างประหยัดพลังงาน",
+    overlay: "bg-primary/20",
+    alt: "อาคารสำนักงานสูงพร้อมระบบไฟฟ้าอาคาร",
+  },
+  {
+    image: "/images/audience-mall.jpg",
+    eyebrow: "คอมเพล็กซ์ / รีเทล",
+    title: "ศูนย์การค้า",
+    body: "Commercial Complexes & Retail Centers พร้อมระบบกระจายโหลดและความปลอดภัยสูงสุด",
+    overlay: "bg-primary/20",
+    alt: "ศูนย์การค้าและอาคารพาณิชย์",
+  },
+  {
+    image: "/images/audience-construction.jpg",
+    eyebrow: "ก่อสร้างใหม่",
+    title: "โครงการก่อสร้างใหม่",
+    body: "New Construction & Warehouses วางระบบไฟตั้งแต่ฐานรากจนถึงขอมิเตอร์เปิดใช้งาน",
+    overlay: "bg-primary/20",
+    alt: "โครงการก่อสร้างใหม่และคลังสินค้า",
+  },
+  {
+    image: "/images/audience-renovation.jpg",
+    eyebrow: "รีโนเวท / อัปเกรด",
+    title: "งานปรับปรุงระบบ",
+    body: "Renovation & Expansion เพิ่มกำลังการใช้ไฟ เปลี่ยนตู้ MDB เก่า และยกระดับมาตรฐาน",
+    overlay: "bg-secondary-container/20",
+    eyebrowClass: "text-secondary",
+    alt: "งานปรับปรุงระบบไฟฟ้าและตู้ควบคุม",
+  },
+];
+---
+
+<section class="w-full bg-surface py-space-xl">
+  <div class="max-w-[1280px] mx-auto px-gutter flex flex-col gap-space-xl">
+    <div class="flex flex-col items-center text-center gap-space-xs max-w-2xl mx-auto">
+      <span class="font-label-sm text-label-sm tracking-widest text-primary uppercase font-bold">
+        TARGET AUDIENCE
+      </span>
+      <h2
+        class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface tracking-tight"
+      >
+        เหมาะกับใคร? ผู้ใช้งานที่ไว้วางใจบริการของเรา
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">
+        รองรับความต้องการระดับมาตรฐานอุตสาหกรรมในทุกประเภทอาคารและสถานประกอบการ
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      {
+        audiences.map((item) => (
+          <article class="flex flex-col rounded-xl bg-surface-container-lowest overflow-hidden shadow-sm hover:shadow-md transition-all group">
+            <div class="h-36 bg-surface-container-high relative overflow-hidden">
+              <img
+                alt={item.alt}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                src={item.image}
+                width="400"
+                height="240"
+              />
+              <div class:list={["absolute inset-0", item.overlay]}></div>
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <span
+                class:list={[
+                  "font-label-sm text-label-sm font-bold uppercase mb-1",
+                  item.eyebrowClass ?? "text-primary",
+                ]}
+              >
+                {item.eyebrow}
+              </span>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">{item.title}</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">{item.body}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

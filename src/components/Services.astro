@@ -1,0 +1,90 @@
+---
+const services = [
+  {
+    icon: "electrical_services",
+    title: "ระบบไฟฟ้าแรงต่ำ",
+    body: "เดินสายเมน แผงวงจรย่อย ปลั๊ก สวิตช์ และกำลังไฟโรงงาน",
+    tone: "primary",
+  },
+  {
+    icon: "electric_meter",
+    title: "ระบบไฟฟ้าแรงสูง",
+    body: "สถานีไฟฟ้าย่อย เสาพาดสาย อุปกรณ์ตัดตอนมาตรฐาน MEA/PEA",
+    tone: "secondary",
+  },
+  {
+    icon: "factory",
+    title: "ระบบไฟฟ้าโรงงาน",
+    body: "จ่ายไฟเครื่องจักรไลน์ผลิต มอเตอร์ และระบบขับเคลื่อนอัตโนมัติ",
+    tone: "primary",
+  },
+  {
+    icon: "view_quilt",
+    title: "ตู้ MDB / DB Control",
+    body: "ออกแบบ ประกอบ ติดตั้งตู้สวิตช์บอร์ด พร้อม Cap Bank",
+    tone: "secondary",
+  },
+  {
+    icon: "reorder",
+    title: "Cable Tray / Ladder",
+    body: "รางเก็บสายไฟ รางเคเบิลเทรย์ แลดเดอร์ และรางวายเวย์มาตรฐาน",
+    tone: "primary",
+  },
+  {
+    icon: "power",
+    title: "ติดตั้งหม้อแปลงไฟฟ้า",
+    body: "บริการติดตั้ง บำรุงรักษา หม้อแปลงน้ำมัน และ Dry-Type",
+    tone: "secondary",
+  },
+  {
+    icon: "draw",
+    title: "ออกแบบระบบวิศวกรรม",
+    body: "Single Line Diagram, Load Schedule คำนวณ Short Circuit",
+    tone: "primary",
+  },
+  {
+    icon: "checklist",
+    title: "ทดสอบและรับรองประจำปี",
+    body: "Commissioning, Hi-Pot, Thermoscan และเซ็นรับรองความปลอดภัย",
+    tone: "secondary",
+  },
+];
+---
+
+<section class="w-full bg-surface-container-low py-space-xl" id="services">
+  <div class="max-w-[1280px] mx-auto px-gutter flex flex-col gap-space-xl">
+    <div class="flex flex-col items-center text-center gap-space-xs max-w-2xl mx-auto">
+      <span class="font-label-sm text-label-sm tracking-widest text-primary uppercase font-bold">
+        CORE SERVICES & CAPABILITIES
+      </span>
+      <h2
+        class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface tracking-tight"
+      >
+        ประเภทงานของเรารองรับทุกความต้องการด้านระบบไฟฟ้า
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">
+        ดูแลครบทุกมิติของระบบไฟฟ้าเพื่อความเสถียรและความปลอดภัยสูงสุดของธุรกิจคุณ
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        services.map((service) => (
+          <div class="flex flex-col p-5 rounded-xl bg-surface shadow-xs hover:shadow-md transition-all duration-300 group hover:-translate-y-1">
+            <div
+              class:list={[
+                "w-12 h-12 rounded-lg flex items-center justify-center mb-3 transition-colors",
+                service.tone === "primary"
+                  ? "bg-tertiary-fixed text-primary group-hover:bg-primary group-hover:text-on-primary"
+                  : "bg-secondary-fixed text-secondary group-hover:bg-secondary-container group-hover:text-on-secondary",
+              ]}
+            >
+              <span class="material-symbols-outlined text-[28px]">{service.icon}</span>
+            </div>
+            <h3 class="font-headline-sm text-[18px] text-on-surface mb-1">{service.title}</h3>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">{service.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

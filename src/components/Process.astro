@@ -1,0 +1,96 @@
+---
+const steps = [
+  {
+    number: "01",
+    icon: "architecture",
+    title: "ออกแบบ",
+    body: "Consulting & Survey สำรวจหน้างานและกำหนดสเปกความต้องการ",
+    accent: false,
+  },
+  {
+    number: "02",
+    icon: "calculate",
+    title: "คำนวณ",
+    body: "Load Calculation, Protection Coordination และจัดทำ BOQ โปร่งใส",
+    accent: false,
+  },
+  {
+    number: "03",
+    icon: "inventory_2",
+    title: "จัดหา",
+    body: "Procurement คัดสรรอุปกรณ์และสายไฟมาตรฐานสากล มอก./IEC",
+    accent: false,
+  },
+  {
+    number: "04",
+    icon: "construction",
+    title: "ติดตั้ง",
+    body: "Site Execution เดินสาย ติดตั้งตู้ ราง และหม้อแปลงอย่างประณีต",
+    accent: true,
+  },
+  {
+    number: "05",
+    icon: "troubleshoot",
+    title: "ทดสอบ",
+    body: "Commissioning & Hi-Pot ตรวจสอบฉนวนและการทำงานครบทุกฟังก์ชัน",
+    accent: false,
+  },
+  {
+    number: "06",
+    icon: "task_alt",
+    title: "ส่งมอบ",
+    body: "As-Built Drawing, คู่มือการใช้งาน พร้อมการรับประกันและดูแลหลังการขาย",
+    accent: true,
+    highlightNumber: true,
+  },
+];
+---
+
+<section class="w-full bg-surface py-space-xl">
+  <div class="max-w-[1280px] mx-auto px-gutter flex flex-col gap-space-xl">
+    <div class="flex flex-col items-center text-center gap-space-xs max-w-3xl mx-auto">
+      <span class="font-label-sm text-label-sm tracking-widest text-secondary uppercase font-bold">
+        STREAMLINED WORKFLOW
+      </span>
+      <h2
+        class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface tracking-tight"
+      >
+        กระบวนการทำงาน One-Stop Service:
+        <span class="block">ออกแบบ + ติดตั้ง ในบริษัทเดียว</span>
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">
+        ไร้รอยต่อ ลดต้นทุน ส่งมอบงานตรงเวลา ควบคุมโดยวิศวกรทุกขั้นตอน
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 relative">
+      {
+        steps.map((step) => (
+          <div class="flex flex-col p-5 rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300 relative group">
+            <div class="flex items-center justify-between mb-3">
+              <span
+                class:list={[
+                  "font-headline-lg text-headline-lg font-bold transition-colors",
+                  step.highlightNumber
+                    ? "text-secondary-container"
+                    : "text-primary/30 group-hover:text-primary",
+                ]}
+              >
+                {step.number}
+              </span>
+              <span
+                class:list={[
+                  "material-symbols-outlined text-[24px]",
+                  step.accent ? "text-secondary-container" : "text-primary",
+                ]}
+              >
+                {step.icon}
+              </span>
+            </div>
+            <h3 class="font-headline-sm text-headline-sm text-on-surface mb-1.5">{step.title}</h3>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">{step.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

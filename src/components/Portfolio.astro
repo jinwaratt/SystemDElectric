@@ -1,0 +1,178 @@
+---
+const filters = [
+  { id: "all", label: "ทั้งหมด" },
+  { id: "factory", label: "โรงงาน" },
+  { id: "highrise", label: "อาคารสูง" },
+  { id: "substation", label: "สถานีไฟฟ้า" },
+];
+
+const projects = [
+  {
+    image: "/images/portfolio-automotive.jpg",
+    category: "factory",
+    badge: "โรงงานอุตสาหกรรม",
+    location: "นิคมฯ อมตะซิตี้ ชลบุรี",
+    title: "โรงงานผลิตชิ้นส่วนยานยนต์",
+    body: "งานติดตั้งตู้ MDB 4,000A และหม้อแปลงน้ำมัน 2,500 kVA พร้อมระบบ Cap Bank ควบคุมฮาร์มอนิกส์",
+    year: "ปี 2024",
+    alt: "ตู้ MDB โรงงานผลิตชิ้นส่วนยานยนต์ นิคมฯ อมตะซิตี้",
+  },
+  {
+    image: "/images/portfolio-highrise.jpg",
+    category: "highrise",
+    badge: "อาคารสูง",
+    location: "สาทร, กรุงเทพฯ",
+    title: "อาคารสำนักงานใหญ่ 24 ชั้น",
+    body: "งานระบบเมนไฟฟ้าแรงสูง 24kV และเครื่องกำเนิดไฟฟ้าสำรอง Generator 1,000 kVA อัตโนมัติ",
+    year: "ปี 2024",
+    alt: "ระบบไฟฟ้าแรงสูงและเครื่องกำเนิดไฟฟ้าอาคารสูง",
+  },
+  {
+    image: "/images/portfolio-warehouse.jpg",
+    category: "factory",
+    badge: "คลังสินค้า",
+    location: "บางนา-ตราด กม.23",
+    title: "คลังสินค้าควบคุมอุณหภูมิ",
+    body: "ระบบตู้คอนโทรลคอมเพรสเซอร์เครื่องทำความเย็น พร้อมเชื่อมต่อระบบ Solar Rooftop 500 kWp",
+    year: "ปี 2023",
+    alt: "ระบบไฟฟ้าคลังสินค้าควบคุมอุณหภูมิ",
+  },
+  {
+    image: "/images/portfolio-food.jpg",
+    category: "factory",
+    badge: "โรงงานอาหาร",
+    location: "นิคมฯ นวนคร ปทุมธานี",
+    title: "โรงงานแปรรูปอาหารส่งออก",
+    body: "งานระบบไฟฟ้ามาตรฐาน GMP/HACCP ใช้รางสแตนเลส SUS304 และกล่องควบคุมกันน้ำ IP66",
+    year: "ปี 2023",
+    alt: "รางสายไฟสแตนเลสโรงงานอาหาร",
+  },
+  {
+    image: "/images/portfolio-mall.jpg",
+    category: "highrise",
+    badge: "พาณิชย์กรรม",
+    location: "พระราม 9, กรุงเทพฯ",
+    title: "โครงการคอมมูนิตี้มอลล์",
+    body: "งานระบบไฟฟ้าส่องสว่าง Smart Lighting และระบบแผงสวิตช์จ่ายไฟรองรับร้านค้ามากกว่า 80 ยูนิต",
+    year: "ปี 2023",
+    alt: "ระบบไฟฟ้าคอมมูนิตี้มอลล์",
+  },
+  {
+    image: "/images/portfolio-substation.jpg",
+    category: "substation",
+    badge: "ตรวจสอบประจำปี",
+    location: "นิคมฯ มาบตาพุด ระยอง",
+    title: "โรงงานเคมีภัณฑ์และปิโตรเคมี",
+    body: "งานทดสอบและตรวจรับรองความปลอดภัยระบบไฟฟ้าประจำปี Thermoscan และทดสอบการตัดตอนรีเลย์",
+    year: "ปี 2024",
+    alt: "วิศวกรตรวจสอบสถานีไฟฟ้าโรงงานปิโตรเคมี",
+  },
+];
+---
+
+<section class="w-full bg-surface-container-low py-space-xl overflow-hidden" id="projects" data-portfolio>
+  <div class="max-w-[1280px] mx-auto px-gutter flex flex-col gap-space-lg">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <span class="font-label-sm text-label-sm tracking-widest text-primary uppercase font-bold">
+          PROVEN TRACK RECORD
+        </span>
+        <h2
+          class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface tracking-tight"
+        >
+          ผลงานของเรา (Project Portfolio)
+        </h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">
+          โครงการมาตรฐานคุณภาพที่ส่งมอบตรงเวลา ปลอดภัย 100%
+        </p>
+      </div>
+      <div
+        class="flex items-center gap-1.5 p-1 rounded-lg bg-surface-container-high overflow-x-auto self-start md:self-auto"
+        role="tablist"
+        aria-label="กรองผลงาน"
+      >
+        {
+          filters.map((filter, index) => (
+            <button
+              class:list={[
+                "portfolio-filter px-3.5 py-1.5 rounded-md font-label-md text-label-md transition-colors whitespace-nowrap",
+                index === 0
+                  ? "bg-surface text-primary font-bold shadow-sm"
+                  : "text-on-surface-variant hover:text-on-surface",
+              ]}
+              data-filter={filter.id}
+              type="button"
+              role="tab"
+              aria-selected={index === 0 ? "true" : "false"}
+            >
+              {filter.label}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        projects.map((project) => (
+          <article
+            class="portfolio-card flex flex-col rounded-xl bg-surface overflow-hidden shadow-sm hover:shadow-md transition-all group"
+            data-category={project.category}
+          >
+            <div class="h-48 bg-surface-container relative overflow-hidden">
+              <img
+                alt={project.alt}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                src={project.image}
+                width="640"
+                height="384"
+              />
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded bg-surface/90 backdrop-blur-sm text-primary font-label-sm text-label-sm font-bold shadow-sm">
+                {project.badge}
+              </div>
+            </div>
+            <div class="p-5 flex flex-col gap-2 flex-1">
+              <span class="font-label-sm text-label-sm text-secondary font-bold">{project.location}</span>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface">{project.title}</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">{project.body}</p>
+              <div class="pt-3 mt-auto flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+                <span class="flex items-center gap-1 text-primary">
+                  <span class="material-symbols-outlined text-[16px]">verified</span>
+                  ส่งมอบเรียบร้อย
+                </span>
+                <span>{project.year}</span>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector("[data-portfolio]");
+  if (root) {
+    const buttons = root.querySelectorAll<HTMLButtonElement>(".portfolio-filter");
+    const cards = root.querySelectorAll<HTMLElement>(".portfolio-card");
+
+    function applyFilter(filter: string) {
+      cards.forEach((card) => {
+        const match = filter === "all" || card.dataset.category === filter;
+        card.classList.toggle("hidden", !match);
+      });
+      buttons.forEach((button) => {
+        const active = button.dataset.filter === filter;
+        button.setAttribute("aria-selected", String(active));
+        button.classList.toggle("bg-surface", active);
+        button.classList.toggle("text-primary", active);
+        button.classList.toggle("font-bold", active);
+        button.classList.toggle("shadow-sm", active);
+        button.classList.toggle("text-on-surface-variant", !active);
+      });
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => applyFilter(button.dataset.filter ?? "all"));
+    });
+  }
+</script>

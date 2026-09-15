@@ -1,0 +1,29 @@
+---
+const brands = [
+  { name: "Schneider", className: "text-[15px] text-on-surface tracking-tight" },
+  { name: "ABB", className: "text-[16px] text-red-600 tracking-wider" },
+  { name: "SIEMENS", className: "text-[15px] text-teal-700 tracking-tight" },
+  { name: "MITSUBISHI", className: "text-[14px] text-on-surface tracking-tight" },
+  { name: "Panasonic", className: "text-[14px] text-blue-700 tracking-tight" },
+  { name: "EATON", className: "text-[16px] text-on-surface tracking-tight" },
+  { name: "THAI YAZAKI", className: "text-[14px] text-orange-600 tracking-tight" },
+  { name: "3M", className: "text-[17px] text-red-700 tracking-tight" },
+];
+---
+
+<section class="w-full bg-surface-container-lowest py-space-lg">
+  <div class="max-w-[1280px] mx-auto px-gutter flex flex-col items-center gap-6">
+    <p class="font-label-md text-label-md text-on-surface-variant tracking-wider uppercase text-center">
+      เลือกใช้อุปกรณ์มาตรฐานระดับสากลจากพันธมิตรแบรนด์ชั้นนำ
+    </p>
+    <div class="w-full grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 items-center">
+      {
+        brands.map((brand) => (
+          <div class="p-3.5 rounded-lg bg-surface flex items-center justify-center shadow-xs hover:shadow-sm transition-all text-center min-h-14">
+            <span class:list={["font-headline-sm font-bold", brand.className]}>{brand.name}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

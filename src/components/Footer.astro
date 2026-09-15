@@ -1,0 +1,68 @@
+---
+import { site } from "../data/site";
+---
+
+<footer class="w-full bg-primary text-on-primary pt-space-xl pb-space-lg">
+  <div class="max-w-[1280px] mx-auto px-gutter">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-xl pb-space-xl">
+      <div class="flex flex-col gap-space-md lg:col-span-5">
+        <div class="flex items-center gap-3">
+          <img
+            alt="System Electrical Logo"
+            class="h-9 w-auto object-contain brightness-0 invert"
+            src={site.logo}
+            width="120"
+            height="36"
+          />
+          <span class="font-headline-sm text-headline-sm text-on-primary tracking-tight">{site.name}</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-tertiary-container max-w-sm">
+          ผู้นำบริการวิศวกรรมไฟฟ้าระบบอุตสาหกรรมครบวงจร บริการออกแบบ ติดตั้ง ตรวจสอบระบบไฟฟ้าแรงสูง-แรงต่ำ
+          ตู้สวิตช์บอร์ด MDB และระบบพลังงานสะอาดตามมาตรฐานความปลอดภัยระดับสากล
+        </p>
+      </div>
+      <div class="flex flex-col gap-space-md lg:col-span-4">
+        <span class="font-label-lg text-label-lg uppercase tracking-wider text-secondary-fixed">
+          สำนักงานใหญ่และศูนย์บริการ
+        </span>
+        <address class="not-italic flex flex-col gap-2 font-body-sm text-body-sm text-on-tertiary-container">
+          <p class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">location_on</span>
+            <span>{site.address}</span>
+          </p>
+          <p class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">mail</span>
+            <a class="hover:text-on-primary transition-colors" href={`mailto:${site.email}`}>{site.email}</a>
+          </p>
+          <p class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">call</span>
+            <span>สายด่วนวิศวกร: {site.phoneDisplay}, {site.phoneMobileDisplay}</span>
+          </p>
+        </address>
+      </div>
+      <div class="flex flex-col gap-space-md lg:col-span-3">
+        <span class="font-label-lg text-label-lg uppercase tracking-wider text-secondary-fixed">เวลาทำการ</span>
+        <div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-tertiary-container">
+          <div class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">schedule</span>
+            <div>
+              <p class="font-label-md text-label-md text-on-primary">จันทร์ - เสาร์:</p>
+              <p>{site.weekdayHours}</p>
+            </div>
+          </div>
+          <p class="font-label-sm text-label-sm text-secondary-fixed pt-space-xs">
+            * ทีมฉุกเฉินโรงงานอุตสาหกรรมพร้อมปฏิบัติการ 24 ชั่วโมง
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md font-label-sm text-label-sm text-on-tertiary-container"
+    >
+      <p>© 2025 {site.legalName} สงวนลิขสิทธิ์ทุกประการ ตามมาตรฐานวิศวกรรมแห่งประเทศไทย (EIT)</p>
+      <div class="flex items-center gap-space-md">
+        <a class="hover:text-on-primary transition-colors" href="#about">มาตรฐานความปลอดภัย</a>
+      </div>
+    </div>
+  </div>
+</footer>

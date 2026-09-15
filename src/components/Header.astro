@@ -1,0 +1,145 @@
+---
+import { navItems, site } from "../data/site";
+---
+
+<header
+  class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+>
+  <div class="max-w-[1280px] mx-auto px-gutter h-20 flex items-center justify-between gap-space-md">
+    <div class="flex items-center gap-space-md shrink-0">
+      <a class="flex items-center gap-3" href="#home">
+        <img
+          alt="System Electrical Logo"
+          class="h-8 w-auto object-contain"
+          src={site.logo}
+          width="120"
+          height="32"
+        />
+        <div class="flex flex-col">
+          <span class="font-headline-sm text-headline-sm text-primary leading-tight tracking-tight">
+            {site.name}
+          </span>
+        </div>
+      </a>
+    </div>
+    <nav
+      id="primary-nav"
+      class="hidden xl:flex items-center gap-space-lg"
+      aria-label="หลัก"
+    >
+      {
+        navItems.map((item, index) => (
+          <a
+            class:list={[
+              "nav-link transition-colors py-1 font-label-lg text-label-lg",
+              index === 0
+                ? "text-primary font-bold"
+                : "text-on-surface-variant hover:text-primary",
+            ]}
+            data-nav-link
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="flex items-center gap-space-sm shrink-0">
+      <a
+        class="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors font-label-md text-label-md text-on-surface"
+        href={`tel:${site.phoneTel}`}
+      >
+        <span class="material-symbols-outlined text-[18px] text-primary">call</span>
+        <span>{site.phoneDisplay}</span>
+      </a>
+      <a
+        class="hidden lg:flex items-center gap-1.5 px-3 py-2 rounded-lg bg-primary-container hover:bg-primary transition-colors text-on-primary font-label-md text-label-md"
+        href={site.lineUrl}
+        rel="noopener"
+        target="_blank"
+      >
+        <span class="material-symbols-outlined text-[18px]">chat</span>
+        <span>{site.lineId}</span>
+      </a>
+      <button
+        id="menu-toggle"
+        class="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface"
+        type="button"
+        aria-controls="mobile-nav"
+        aria-expanded="false"
+        aria-label="เปิดเมนู"
+      >
+        <span class="material-symbols-outlined" data-menu-icon>menu</span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-nav" class="xl:hidden hidden border-t border-outline-variant bg-surface/95 backdrop-blur-xl">
+    <nav class="max-w-[1280px] mx-auto px-gutter py-space-md flex flex-col gap-1" aria-label="มือถือ">
+      {
+        navItems.map((item) => (
+          <a
+            class="nav-link rounded-lg px-3 py-3 font-label-lg text-label-lg text-on-surface hover:bg-surface-container hover:text-primary"
+            data-nav-link
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        class="mt-2 inline-flex items-center justify-center gap-2 px-3 py-3 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg md:hidden"
+        href={`tel:${site.phoneTel}`}
+      >
+        <span class="material-symbols-outlined text-[18px]">call</span>
+        {site.phoneDisplay}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const panel = document.getElementById("mobile-nav");
+  const icon = toggle?.querySelector("[data-menu-icon]");
+  const links = document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]");
+
+  function setOpen(open: boolean) {
+    if (!toggle || !panel) return;
+    panel.classList.toggle("hidden", !open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "ปิดเมนู" : "เปิดเมนู");
+    if (icon) icon.textContent = open ? "close" : "menu";
+  }
+
+  toggle?.addEventListener("click", () => {
+    setOpen(panel?.classList.contains("hidden") ?? true);
+  });
+
+  links.forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
+  });
+
+  const sections = [...links]
+    .map((link) => document.querySelector<HTMLElement>(link.getAttribute("href") ?? ""))
+    .filter((section): section is HTMLElement => Boolean(section));
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible?.target.id) return;
+      links.forEach((link) => {
+        const active = link.getAttribute("href") === `#${visible.target.id}`;
+        link.classList.toggle("text-primary", active);
+        link.classList.toggle("font-bold", active);
+        if (!link.closest("#mobile-nav")) {
+          link.classList.toggle("text-on-surface-variant", !active);
+        }
+      });
+    },
+    { rootMargin: "-30% 0px -55% 0px", threshold: [0.1, 0.3, 0.6] },
+  );
+
+  sections.forEach((section) => observer.observe(section));
+</script>
