@@ -5,14 +5,14 @@ export const site = {
   description:
     "รับออกแบบและติดตั้งระบบไฟฟ้าครบวงจร แรงต่ำ–แรงสูง สำหรับโรงงานอุตสาหกรรม อาคารขนาดใหญ่ และคลังสินค้า โดยทีมวิศวกรผู้เชี่ยวชาญพร้อมใบ กว. ตามมาตรฐาน วสท. และการไฟฟ้าฯ",
   url: "https://systemdelectrical.com",
-  phoneDisplay: "02-XXX-XXXX",
-  phoneTel: "021234567",
-  phoneMobileDisplay: "081-XXX-XXXX",
-  lineId: "@systemelectrical",
-  lineUrl: "https://line.me",
-  email: "contact@systemelectrical.co.th",
-  address:
-    "เลขที่ 88/12 หมู่ที่ 5 นิคมอุตสาหกรรมบางปะอิน ตำบลคลองจิก อำเภอบางปะอิน จังหวัดพระนครศรีอยุธยา 13160",
+  phoneDisplay: "081-931-5831",
+  phoneTel: "0819315831",
+  phoneMobileDisplay: "081-931-5831",
+  lineId: "0819315831",
+  lineUrl: "https://line.me/ti/p/~0819315831",
+  email: "kritsana138@gmail.com",
+  emails: ["kritsana138@gmail.com", "perfectpowerelectric@gmail.com"],
+  address: "21/11 หมู่ที่ 5 ตำบลทวีวัฒนา อำเภอไทรน้อย จังหวัดนนทบุรี",
   weekdayHours: "08:00 - 17:30 น.",
   logo: "/images/logo.png",
 };

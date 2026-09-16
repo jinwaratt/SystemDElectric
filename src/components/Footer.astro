@@ -8,11 +8,11 @@ import { site } from "../data/site";
       <div class="flex flex-col gap-space-md lg:col-span-5">
         <div class="flex items-center gap-3">
           <img
-            alt="System Electrical Logo"
-            class="h-9 w-auto object-contain brightness-0 invert"
+            alt="System D Electrical Logo"
+            class="h-14 w-auto object-contain"
             src={site.logo}
-            width="120"
-            height="36"
+            width="280"
+            height="56"
           />
           <span class="font-headline-sm text-headline-sm text-on-primary tracking-tight">{site.name}</span>
         </div>
@@ -30,13 +30,29 @@ import { site } from "../data/site";
             <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">location_on</span>
             <span>{site.address}</span>
           </p>
-          <p class="flex items-center gap-2">
+          <p class="flex items-start gap-2">
             <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">mail</span>
-            <a class="hover:text-on-primary transition-colors" href={`mailto:${site.email}`}>{site.email}</a>
+            <span class="flex flex-col gap-1">
+              {
+                site.emails.map((email) => (
+                  <a class="hover:text-on-primary transition-colors" href={`mailto:${email}`}>
+                    {email}
+                  </a>
+                ))
+              }
+            </span>
           </p>
           <p class="flex items-center gap-2">
             <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">call</span>
-            <span>สายด่วนวิศวกร: {site.phoneDisplay}, {site.phoneMobileDisplay}</span>
+            <a class="hover:text-on-primary transition-colors" href={`tel:${site.phoneTel}`}>
+              Tel: {site.phoneDisplay}
+            </a>
+          </p>
+          <p class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">chat</span>
+            <a class="hover:text-on-primary transition-colors" href={site.lineUrl} rel="noopener" target="_blank">
+              LINE: {site.lineId}
+            </a>
           </p>
         </address>
       </div>
