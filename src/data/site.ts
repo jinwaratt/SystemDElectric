@@ -1,7 +1,7 @@
 export const site = {
   name: "SYSTEM D ELECTRICAL",
-  legalName: "System Electrical Co., Ltd.",
-  title: "System Electrical - Industrial Engineering",
+  legalName: "บริษัท ซิสเท็มดี อีเล็คทริคอล จำกัด",
+  title: "System D Electrical - Industrial Engineering",
   description:
     "รับออกแบบและติดตั้งระบบไฟฟ้าครบวงจร แรงต่ำ–แรงสูง สำหรับโรงงานอุตสาหกรรม อาคารขนาดใหญ่ และคลังสินค้า โดยทีมวิศวกรผู้เชี่ยวชาญพร้อมใบ กว. ตามมาตรฐาน วสท. และการไฟฟ้าฯ",
   url: "https://systemdelectrical.com",

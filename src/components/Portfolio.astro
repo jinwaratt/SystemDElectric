@@ -74,7 +74,7 @@ const projects = [
   <div class="max-w-[1280px] mx-auto px-gutter flex flex-col gap-space-lg">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
       <div>
-        <span class="font-label-sm text-label-sm tracking-widest text-primary uppercase font-bold">
+        <span class="font-label-md text-label-md tracking-widest text-primary uppercase font-bold">
           PROVEN TRACK RECORD
         </span>
         <h2
@@ -95,7 +95,7 @@ const projects = [
           filters.map((filter, index) => (
             <button
               class:list={[
-                "portfolio-filter px-3.5 py-1.5 rounded-md font-label-md text-label-md transition-colors whitespace-nowrap",
+                "portfolio-filter px-3.5 py-2 rounded-md font-label-lg text-label-lg transition-colors whitespace-nowrap",
                 index === 0
                   ? "bg-surface text-primary font-bold shadow-sm"
                   : "text-on-surface-variant hover:text-on-surface",
@@ -126,15 +126,15 @@ const projects = [
                 width="640"
                 height="384"
               />
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded bg-surface/90 backdrop-blur-sm text-primary font-label-sm text-label-sm font-bold shadow-sm">
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded bg-surface/90 backdrop-blur-sm text-primary font-label-md text-label-md font-bold shadow-sm">
                 {project.badge}
               </div>
             </div>
             <div class="p-5 flex flex-col gap-2 flex-1">
-              <span class="font-label-sm text-label-sm text-secondary font-bold">{project.location}</span>
+              <span class="font-label-md text-label-md text-secondary font-bold">{project.location}</span>
               <h3 class="font-headline-sm text-headline-sm text-on-surface">{project.title}</h3>
               <p class="font-body-sm text-body-sm text-on-surface-variant">{project.body}</p>
-              <div class="pt-3 mt-auto flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+              <div class="pt-3 mt-auto flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
                 <span class="flex items-center gap-1 text-primary">
                   <span class="material-symbols-outlined text-[16px]">verified</span>
                   ส่งมอบเรียบร้อย

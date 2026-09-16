@@ -16,7 +16,7 @@ import { site } from "../data/site";
           />
           <span class="font-headline-sm text-headline-sm text-on-primary tracking-tight">{site.name}</span>
         </div>
-        <p class="font-body-sm text-body-sm text-on-tertiary-container max-w-sm">
+        <p class="font-body-md text-body-md text-on-tertiary-container max-w-sm">
           ผู้นำบริการวิศวกรรมไฟฟ้าระบบอุตสาหกรรมครบวงจร บริการออกแบบ ติดตั้ง ตรวจสอบระบบไฟฟ้าแรงสูง-แรงต่ำ
           ตู้สวิตช์บอร์ด MDB และระบบพลังงานสะอาดตามมาตรฐานความปลอดภัยระดับสากล
         </p>
@@ -25,7 +25,7 @@ import { site } from "../data/site";
         <span class="font-label-lg text-label-lg uppercase tracking-wider text-secondary-fixed">
           สำนักงานใหญ่และศูนย์บริการ
         </span>
-        <address class="not-italic flex flex-col gap-2 font-body-sm text-body-sm text-on-tertiary-container">
+        <address class="not-italic flex flex-col gap-2 font-body-md text-body-md text-on-tertiary-container">
           <p class="flex items-start gap-2">
             <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">location_on</span>
             <span>{site.address}</span>
@@ -58,22 +58,19 @@ import { site } from "../data/site";
       </div>
       <div class="flex flex-col gap-space-md lg:col-span-3">
         <span class="font-label-lg text-label-lg uppercase tracking-wider text-secondary-fixed">เวลาทำการ</span>
-        <div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-tertiary-container">
+        <div class="flex flex-col gap-2 font-body-md text-body-md text-on-tertiary-container">
           <div class="flex items-start gap-2">
             <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">schedule</span>
             <div>
-              <p class="font-label-md text-label-md text-on-primary">จันทร์ - เสาร์:</p>
+              <p class="font-label-lg text-label-lg text-on-primary">จันทร์ - เสาร์:</p>
               <p>{site.weekdayHours}</p>
             </div>
           </div>
-          <p class="font-label-sm text-label-sm text-secondary-fixed pt-space-xs">
-            * ทีมฉุกเฉินโรงงานอุตสาหกรรมพร้อมปฏิบัติการ 24 ชั่วโมง
-          </p>
         </div>
       </div>
     </div>
     <div
-      class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md font-label-sm text-label-sm text-on-tertiary-container"
+      class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md font-label-md text-label-md text-on-tertiary-container"
     >
       <p>© 2025 {site.legalName} สงวนลิขสิทธิ์ทุกประการ ตามมาตรฐานวิศวกรรมแห่งประเทศไทย (EIT)</p>
       <div class="flex items-center gap-space-md">

@@ -1,60 +1,86 @@
 ---
-const stats = [
-  { value: "20+", label: "ปีประสบการณ์", detail: "ในวงการวิศวกรรม", accent: false },
-  { value: "100+", label: "โครงการใหญ่", detail: "ส่งมอบตามงบ", accent: false },
-  { value: "50+", label: "ทีมวิศวกร", detail: "และช่างชำนาญการ", accent: false },
-  { value: "100%", label: "ทั่วประเทศ", detail: "ครอบคลุมทุกนิคมฯ", accent: true },
-];
+import { site } from "../data/site";
 
 const reasons = [
-  { text: "วิศวกรมีใบประกอบวิชาชีพ กว. ควบคุมและเซ็นรับรองทุกไซต์งาน", accent: false },
-  { text: "ใช้อุปกรณ์เกรดอุตสาหกรรมแท้ 100% มาตรฐานระดับโลก", accent: false },
-  { text: "ส่งมอบงานตรงเวลา พร้อมรับประกันผลงานการติดตั้ง 1-2 ปีเต็ม", accent: false },
-  { text: "มีทีมดูแลฉุกเฉิน 24/7 เพื่อให้สายการผลิตของท่านไม่สะดุด", accent: true },
+  {
+    icon: "payments",
+    title: "FAIR PRICE",
+    body: "ราคามีความสมเหตุสมผล",
+  },
+  {
+    icon: "verified",
+    title: "QUALITY PRODUCT",
+    body: "คุณภาพสินค้า ได้รับมาตรฐานสากล",
+  },
+  {
+    icon: "handshake",
+    title: "PROFESSIONAL",
+    body: "ทีมงานมีประสบการณ์ด้านการติดตั้ง และวางระบบมากกว่า 10 ปี",
+  },
 ];
 ---
 
 <section class="w-full bg-surface py-space-xl" id="about">
-  <div class="max-w-[1280px] mx-auto px-gutter">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-      <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-6">
-        {
-          stats.map((stat) => (
-            <div class="flex flex-col pl-3 border-l-2 border-secondary-container">
-              <span
-                class:list={[
-                  "font-headline-xl text-headline-xl-mobile lg:text-headline-xl font-bold",
-                  stat.accent ? "text-secondary-container" : "text-primary",
-                ]}
-              >
-                {stat.value}
-              </span>
-              <span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant mt-1">
-                {stat.label}
-              </span>
-              <span class="font-body-sm text-body-sm text-on-surface font-semibold">{stat.detail}</span>
-            </div>
-          ))
-        }
-      </div>
-      <div class="lg:col-span-5 p-6 rounded-2xl bg-surface-container shadow-sm flex flex-col gap-4">
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-primary text-[24px]">verified_user</span>
-          <h3 class="font-headline-sm text-headline-sm text-on-surface">ทำไมต้องเลือก System Electrical?</h3>
+  <div class="max-w-[1280px] mx-auto px-gutter flex flex-col gap-space-lg">
+    <div class="flex flex-col gap-2">
+      <span class="font-label-md text-label-md text-primary uppercase font-bold tracking-wider">
+        ABOUT US
+      </span>
+      <h2
+        class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface tracking-tight"
+      >
+        เกี่ยวกับเรา
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-stretch">
+      <div class="lg:col-span-7 flex flex-col justify-center gap-space-md">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+          <img
+            alt={`${site.name} Logo`}
+            class="h-24 w-24 object-contain shrink-0"
+            src={site.logo}
+            width="96"
+            height="96"
+          />
+          <p class="font-headline-md text-headline-md text-on-surface leading-snug">
+            <span class="text-secondary-container font-bold">SYSTEM</span>
+            <span class="text-primary font-extrabold text-[40px] leading-none px-1">D</span>
+            <span class="text-primary font-bold">ELECTRICAL</span>
+            <span class="block font-body-lg text-body-lg text-on-surface mt-1">
+              เพราะเรามี <span class="text-primary font-extrabold">D</span> ด้านระบบไฟฟ้า
+            </span>
+          </p>
         </div>
-        <ul class="flex flex-col gap-2.5 font-body-sm text-body-sm text-on-surface">
+        <div class="flex flex-col gap-4 font-body-md text-body-md text-on-surface-variant max-w-3xl">
+          <p>
+            <span class="text-on-surface font-semibold">{site.legalName}</span>
+            ได้ก่อตั้งขึ้นปี พ.ศ. 2563 โดยทีมงานวิศวกรและช่างผู้ชำนาญการด้านงานระบบวิศวกรรมไฟฟ้าและเครื่องกล
+          </p>
+          <p>
+            ในการดำเนินธุรกิจด้านงานรับเหมาติดตั้งระบบไฟฟ้า ทีมงานของ
+            <span class="text-on-surface font-semibold">{site.legalName}</span>
+            มีความมุ่งมั่นและตระหนักเป็นอย่างยิ่งว่าการทำงานให้บรรลุเป้าหมายตามความประสงค์
+            จะสร้างความเชื่อมั่นเกิดทำให้เกิดความประทับใจจากลูกค้า ดังนั้นบริษัทฯ มีความตั้งใจและพร้อมที่จะเป็นผู้ให้บริการงานที่ดีที่สุดแก่ท่าน
+          </p>
+        </div>
+      </div>
+      <div class="lg:col-span-5 h-full p-6 sm:p-8 rounded-2xl bg-surface-container-low border border-outline-variant flex flex-col justify-center">
+        <h3 class="font-headline-sm text-headline-sm text-on-surface uppercase tracking-wider mb-6">
+          Why Choose Us
+        </h3>
+        <ul class="flex flex-col gap-6">
           {
             reasons.map((reason) => (
-              <li class="flex items-start gap-2">
-                <span
-                  class:list={[
-                    "material-symbols-outlined text-[18px] shrink-0 font-bold",
-                    reason.accent ? "text-secondary-container" : "text-primary",
-                  ]}
-                >
-                  check
+              <li class="flex items-start gap-4">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-surface text-primary shrink-0 shadow-sm">
+                  <span class="material-symbols-outlined text-[28px]">{reason.icon}</span>
                 </span>
-                <span>{reason.text}</span>
+                <div>
+                  <p class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">
+                    {reason.title}
+                  </p>
+                  <p class="font-body-md text-body-md text-on-surface-variant mt-1">{reason.body}</p>
+                </div>
               </li>
             ))
           }
