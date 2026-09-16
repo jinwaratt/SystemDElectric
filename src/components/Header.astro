@@ -5,18 +5,18 @@ import { navItems, site } from "../data/site";
 <header
   class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
 >
-  <div class="max-w-[1280px] mx-auto px-gutter h-28 md:h-36 flex items-center justify-between gap-space-md">
-    <div class="flex items-center gap-space-md shrink-0">
-      <a class="flex items-center gap-3" href="#home">
+  <div class="max-w-[1280px] mx-auto px-gutter h-24 md:h-28 2xl:h-36 flex items-center justify-between gap-space-sm md:gap-space-md">
+    <div class="flex items-center gap-space-sm md:gap-space-md shrink-0 min-w-0">
+      <a class="flex items-center gap-2.5 md:gap-3 min-w-0" href="#home">
         <img
           alt="System D Electrical Logo"
-          class="h-20 md:h-24 w-auto object-contain"
+          class="h-16 md:h-20 2xl:h-24 w-auto object-contain"
           src={site.logo}
           width="96"
           height="96"
         />
-        <div class="flex flex-col">
-          <span class="font-headline-md text-[22px] md:text-[26px] text-primary leading-tight tracking-tight font-extrabold">
+        <div class="flex flex-col min-w-0">
+          <span class="font-headline-md text-[20px] md:text-[22px] 2xl:text-[26px] text-primary leading-tight tracking-tight font-extrabold truncate">
             {site.name}
           </span>
         </div>
@@ -24,7 +24,7 @@ import { navItems, site } from "../data/site";
     </div>
     <nav
       id="primary-nav"
-      class="hidden xl:flex items-center gap-6"
+      class="hidden xl:flex items-center gap-4 2xl:gap-6"
       aria-label="หลัก"
     >
       {
@@ -44,14 +44,14 @@ import { navItems, site } from "../data/site";
     </nav>
     <div class="flex items-center gap-space-sm shrink-0">
       <a
-        class="hidden md:flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors font-label-lg text-label-lg text-on-surface whitespace-nowrap"
+        class="hidden md:flex items-center gap-2 px-3 2xl:px-4 py-2 2xl:py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors font-label-lg text-label-lg text-on-surface whitespace-nowrap"
         href={`tel:${site.phoneTel}`}
       >
         <span class="material-symbols-outlined text-[20px] text-primary">call</span>
         <span>{site.phoneDisplay}</span>
       </a>
       <a
-        class="hidden lg:flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary-container hover:bg-primary transition-colors text-on-primary font-label-lg text-label-lg whitespace-nowrap"
+        class="hidden lg:flex items-center gap-2 px-3 2xl:px-4 py-2 2xl:py-2.5 rounded-lg bg-primary-container hover:bg-primary transition-colors text-on-primary font-label-lg text-label-lg whitespace-nowrap"
         href={site.lineUrl}
         rel="noopener"
         target="_blank"
