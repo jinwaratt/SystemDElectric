@@ -12,8 +12,8 @@ import { navItems, site } from "../data/site";
           alt="System D Electrical Logo"
           class="h-16 md:h-20 2xl:h-24 w-auto object-contain"
           src={site.logo}
-          width="96"
-          height="96"
+          width="130"
+          height="80"
         />
         <div class="flex flex-col min-w-0">
           <span class="font-headline-md text-[20px] md:text-[22px] 2xl:text-[26px] text-primary leading-tight tracking-tight font-extrabold truncate">
@@ -122,30 +122,72 @@ import { navItems, site } from "../data/site";
     setOpen(panel?.classList.contains("hidden") ?? true);
   });
 
+  const sections = [
+    ...new Map(
+      [...links]
+        .map((link) => {
+          const href = link.getAttribute("href");
+          const section = href ? document.querySelector<HTMLElement>(href) : null;
+          return href && section ? ([href, section] as const) : null;
+        })
+        .filter((item): item is readonly [string, HTMLElement] => Boolean(item)),
+    ).values(),
+  ];
+
+  let lockActive = false;
+  let lockTimer = 0;
+  let ticking = false;
+
+  function headerOffset() {
+    const header = document.querySelector("header");
+    return (header?.getBoundingClientRect().height ?? 112) + 48;
+  }
+
+  function syncActiveFromScroll() {
+    if (lockActive) return;
+    const offset = headerOffset();
+    let current = sections[0] ? `#${sections[0].id}` : "#home";
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= offset) current = `#${section.id}`;
+    }
+    setActive(current);
+  }
+
   links.forEach((link) => {
-    link.addEventListener("click", () => {
-      setOpen(false);
+    link.addEventListener("click", (event) => {
       const href = link.getAttribute("href");
-      if (href) setActive(href);
+      if (href?.startsWith("#")) {
+        const target = document.querySelector<HTMLElement>(href);
+        if (target) {
+          event.preventDefault();
+          lockActive = true;
+          window.clearTimeout(lockTimer);
+          setActive(href);
+          target.scrollIntoView({ behavior: "smooth" });
+          history.pushState(null, "", href);
+          lockTimer = window.setTimeout(() => {
+            lockActive = false;
+            syncActiveFromScroll();
+          }, 700);
+        }
+      }
+      setOpen(false);
     });
   });
 
-  setActive(location.hash || "#home");
-
-  const sections = [...links]
-    .map((link) => document.querySelector<HTMLElement>(link.getAttribute("href") ?? ""))
-    .filter((section): section is HTMLElement => Boolean(section));
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!visible?.target.id) return;
-      setActive(`#${visible.target.id}`);
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        syncActiveFromScroll();
+        ticking = false;
+      });
     },
-    { rootMargin: "-30% 0px -55% 0px", threshold: [0.1, 0.3, 0.6] },
+    { passive: true },
   );
 
-  sections.forEach((section) => observer.observe(section));
+  setActive(location.hash || "#home");
+  syncActiveFromScroll();
 </script>
