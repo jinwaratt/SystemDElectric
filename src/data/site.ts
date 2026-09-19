@@ -15,6 +15,7 @@ export const site = {
   address: "21/11 หมู่ที่ 5 ตำบลทวีวัฒนา อำเภอไทรน้อย จังหวัดนนทบุรี",
   weekdayHours: "08:00 - 17:30 น.",
   logo: "/images/logo.png",
+  lineIcon: "/images/line.png",
 };
 
 export const navItems = [

@@ -130,15 +130,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
-    @apply bg-background font-body-md text-body-md text-on-surface antialiased;
+    @apply bg-background font-body-md text-body-md text-on-surface antialiased overflow-x-clip;
   }
 
   section[id],
   footer[id] {
-    scroll-margin-top: 8rem;
+    scroll-margin-top: 6rem;
   }
 
   @media (min-width: 768px) {
