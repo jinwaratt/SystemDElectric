@@ -208,6 +208,16 @@
   text-decoration-thickness: 2px;
 }
 
+.hero-media {
+  object-position: 80% 100%;
+}
+
+@media (min-width: 768px) {
+  .hero-media {
+    object-position: 70% 50%;
+  }
+}
+
 .material-symbols-outlined {
   font-family: "Material Symbols Outlined";
   font-weight: 400;
