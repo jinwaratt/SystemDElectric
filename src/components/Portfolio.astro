@@ -1,178 +1,338 @@
 ---
-const filters = [
-  { id: "all", label: "ทั้งหมด" },
-  { id: "factory", label: "โรงงาน" },
-  { id: "highrise", label: "อาคารสูง" },
-  { id: "substation", label: "สถานีไฟฟ้า" },
-];
+import { projects, type PortfolioProject } from "../data/portfolio";
 
-const projects = [
-  {
-    image: "/images/portfolio-automotive.jpg",
-    category: "factory",
-    badge: "โรงงานอุตสาหกรรม",
-    location: "นิคมฯ อมตะซิตี้ ชลบุรี",
-    title: "โรงงานผลิตชิ้นส่วนยานยนต์",
-    body: "งานติดตั้งตู้ MDB 4,000A และหม้อแปลงน้ำมัน 2,500 kVA พร้อมระบบ Cap Bank ควบคุมฮาร์มอนิกส์",
-    year: "ปี 2024",
-    alt: "ตู้ MDB โรงงานผลิตชิ้นส่วนยานยนต์ นิคมฯ อมตะซิตี้",
-  },
-  {
-    image: "/images/portfolio-highrise.jpg",
-    category: "highrise",
-    badge: "อาคารสูง",
-    location: "สาทร, กรุงเทพฯ",
-    title: "อาคารสำนักงานใหญ่ 24 ชั้น",
-    body: "งานระบบเมนไฟฟ้าแรงสูง 24kV และเครื่องกำเนิดไฟฟ้าสำรอง Generator 1,000 kVA อัตโนมัติ",
-    year: "ปี 2024",
-    alt: "ระบบไฟฟ้าแรงสูงและเครื่องกำเนิดไฟฟ้าอาคารสูง",
-  },
-  {
-    image: "/images/portfolio-warehouse.jpg",
-    category: "factory",
-    badge: "คลังสินค้า",
-    location: "บางนา-ตราด กม.23",
-    title: "คลังสินค้าควบคุมอุณหภูมิ",
-    body: "ระบบตู้คอนโทรลคอมเพรสเซอร์เครื่องทำความเย็น พร้อมเชื่อมต่อระบบ Solar Rooftop 500 kWp",
-    year: "ปี 2023",
-    alt: "ระบบไฟฟ้าคลังสินค้าควบคุมอุณหภูมิ",
-  },
-  {
-    image: "/images/portfolio-food.jpg",
-    category: "factory",
-    badge: "โรงงานอาหาร",
-    location: "นิคมฯ นวนคร ปทุมธานี",
-    title: "โรงงานแปรรูปอาหารส่งออก",
-    body: "งานระบบไฟฟ้ามาตรฐาน GMP/HACCP ใช้รางสแตนเลส SUS304 และกล่องควบคุมกันน้ำ IP66",
-    year: "ปี 2023",
-    alt: "รางสายไฟสแตนเลสโรงงานอาหาร",
-  },
-  {
-    image: "/images/portfolio-mall.jpg",
-    category: "highrise",
-    badge: "พาณิชย์กรรม",
-    location: "พระราม 9, กรุงเทพฯ",
-    title: "โครงการคอมมูนิตี้มอลล์",
-    body: "งานระบบไฟฟ้าส่องสว่าง Smart Lighting และระบบแผงสวิตช์จ่ายไฟรองรับร้านค้ามากกว่า 80 ยูนิต",
-    year: "ปี 2023",
-    alt: "ระบบไฟฟ้าคอมมูนิตี้มอลล์",
-  },
-  {
-    image: "/images/portfolio-substation.jpg",
-    category: "substation",
-    badge: "ตรวจสอบประจำปี",
-    location: "นิคมฯ มาบตาพุด ระยอง",
-    title: "โรงงานเคมีภัณฑ์และปิโตรเคมี",
-    body: "งานทดสอบและตรวจรับรองความปลอดภัยระบบไฟฟ้าประจำปี Thermoscan และทดสอบการตัดตอนรีเลย์",
-    year: "ปี 2024",
-    alt: "วิศวกรตรวจสอบสถานีไฟฟ้าโรงงานปิโตรเคมี",
-  },
-];
+function galleryPayload(project: PortfolioProject) {
+  return JSON.stringify({
+    title: project.title,
+    client: project.client ?? "",
+    images: project.images,
+  });
+}
+
+function extraImages(project: PortfolioProject) {
+  return project.images.slice(1, 4);
+}
 ---
 
 <section class="w-full bg-surface-container-low py-space-xl overflow-clip" id="projects" data-portfolio>
   <div class="max-w-[1280px] mx-auto px-gutter flex flex-col gap-space-lg">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-      <div>
-        <span class="font-label-md text-label-md tracking-widest text-primary uppercase font-bold">
-          PROVEN TRACK RECORD
-        </span>
-        <h2
-          class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface tracking-tight"
-        >
-          ผลงานของเรา (Project Portfolio)
-        </h2>
-        <p class="font-body-md text-body-md text-on-surface-variant">
-          โครงการมาตรฐานคุณภาพที่ส่งมอบตรงเวลา ปลอดภัย 100%
-        </p>
-      </div>
-      <div
-        class="flex items-center gap-1.5 p-1 rounded-lg bg-surface-container-high overflow-x-auto self-start md:self-auto"
-        role="tablist"
-        aria-label="กรองผลงาน"
+    <div>
+      <span class="font-label-md text-label-md tracking-widest text-primary uppercase font-bold">
+        PROVEN TRACK RECORD
+      </span>
+      <h2
+        class="font-headline-lg text-headline-lg-mobile lg:text-headline-lg text-on-surface tracking-tight"
       >
-        {
-          filters.map((filter, index) => (
-            <button
-              class:list={[
-                "portfolio-filter px-3.5 py-2 rounded-md font-label-lg text-label-lg transition-colors whitespace-nowrap",
-                index === 0
-                  ? "bg-surface text-primary font-bold shadow-sm"
-                  : "text-on-surface-variant hover:text-on-surface",
-              ]}
-              data-filter={filter.id}
-              type="button"
-              role="tab"
-              aria-selected={index === 0 ? "true" : "false"}
-            >
-              {filter.label}
-            </button>
-          ))
-        }
-      </div>
+        ผลงานของเรา (Project Portfolio)
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant">
+        โครงการมาตรฐานคุณภาพที่ส่งมอบตรงเวลา ปลอดภัย 100%
+      </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
-        projects.map((project) => (
-          <article
-            class="portfolio-card flex flex-col rounded-xl bg-surface overflow-hidden shadow-sm hover:shadow-md transition-all group"
-            data-category={project.category}
-          >
-            <div class="h-48 bg-surface-container relative overflow-hidden">
-              <img
-                alt={project.alt}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                src={project.image}
-                width="640"
-                height="384"
-              />
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded bg-surface/90 backdrop-blur-sm text-primary font-label-md text-label-md font-bold shadow-sm">
-                {project.badge}
+        projects.map((project) => {
+          const cover = project.images[0];
+          const thumbs = extraImages(project);
+          const remaining = project.images.length - 4;
+
+          return (
+            <article
+              class="portfolio-card flex flex-col rounded-xl bg-surface overflow-hidden shadow-sm hover:shadow-md transition-all group"
+              data-gallery={galleryPayload(project)}
+            >
+              <div class="flex flex-col bg-surface-container-high">
+                <button
+                  class="h-48 w-full border-0 p-0 bg-surface-container relative overflow-hidden text-left cursor-pointer"
+                  data-gallery-open
+                  data-gallery-index="0"
+                  type="button"
+                  aria-haspopup="dialog"
+                  aria-label={`ดูภาพโครงการ ${project.title}`}
+                >
+                  <img
+                    alt={cover.alt}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                    src={cover.src}
+                    width="640"
+                    height="384"
+                  />
+                  {project.images.length > 1 && (
+                    <span class="absolute top-3 right-3 inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface/90 backdrop-blur-sm text-on-surface font-label-md text-label-md font-bold shadow-sm">
+                      <span class="material-symbols-outlined text-[16px] text-primary">photo_library</span>
+                      {project.images.length} ภาพ
+                    </span>
+                  )}
+                </button>
+                {thumbs.length > 0 && (
+                  <div class="flex gap-px">
+                    {thumbs.map((image, index) => {
+                      const isLast = index === thumbs.length - 1 && remaining > 0;
+                      return (
+                        <button
+                          class="relative flex-1 h-16 overflow-hidden cursor-pointer border-0 p-0 bg-surface-container"
+                          data-gallery-open
+                          data-gallery-index={String(index + 1)}
+                          type="button"
+                          aria-label={image.caption}
+                        >
+                          <img
+                            alt=""
+                            class="w-full h-full object-cover pointer-events-none"
+                            src={image.src}
+                            width="200"
+                            height="120"
+                          />
+                          {isLast && (
+                            <span class="absolute inset-0 bg-on-surface/55 text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center">
+                              +{remaining}
+                            </span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
-            </div>
-            <div class="p-5 flex flex-col gap-2 flex-1">
-              <span class="font-label-md text-label-md text-secondary font-bold">{project.location}</span>
-              <h3 class="font-headline-sm text-headline-sm text-on-surface">{project.title}</h3>
-              <p class="font-body-sm text-body-sm text-on-surface-variant">{project.body}</p>
-              <div class="pt-3 mt-auto flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
-                <span class="flex items-center gap-1 text-primary">
-                  <span class="material-symbols-outlined text-[16px]">verified</span>
-                  ส่งมอบเรียบร้อย
-                </span>
-                <span>{project.year}</span>
+              <div class="p-5 flex flex-col gap-2 flex-1">
+                <h3 class="font-headline-sm text-headline-sm text-on-surface leading-snug">{project.title}</h3>
+                {project.client && (
+                  <p class="font-label-md text-label-md text-on-surface-variant">{project.client}</p>
+                )}
+                <p class="font-body-sm text-body-sm text-on-surface-variant">{project.body}</p>
+                <div class="mt-auto pt-2 flex flex-col gap-2">
+                  {project.images.length > 1 && (
+                    <button
+                      class="self-start inline-flex items-center gap-1 border-0 bg-transparent p-0 text-primary font-label-md text-label-md font-bold hover:underline cursor-pointer"
+                      data-gallery-open
+                      data-gallery-index="0"
+                      type="button"
+                    >
+                      <span class="material-symbols-outlined text-[18px]">photo_library</span>
+                      ดูภาพทั้งหมด ({project.images.length})
+                    </button>
+                  )}
+                  <div class="pt-1 flex items-center text-on-surface-variant font-label-md text-label-md">
+                    <span class="flex items-center gap-1 text-primary">
+                      <span class="material-symbols-outlined text-[16px]">verified</span>
+                      ส่งมอบเรียบร้อย
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </article>
-        ))
+            </article>
+          );
+        })
       }
     </div>
   </div>
+
+  <dialog
+    class="portfolio-lightbox m-auto w-[min(920px,calc(100%-1.25rem))] max-h-[92vh] rounded-2xl bg-surface p-0 shadow-xl"
+    data-portfolio-lightbox
+    aria-labelledby="portfolio-lightbox-title"
+  >
+    <div class="flex flex-col max-h-[92vh] overflow-y-auto">
+      <div class="flex items-start justify-between gap-4 px-5 py-4 border-b border-outline-variant">
+        <div class="min-w-0">
+          <h3 id="portfolio-lightbox-title" class="font-headline-sm text-headline-sm text-on-surface leading-snug" data-lightbox-title></h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant" data-lightbox-client></p>
+        </div>
+        <button
+          class="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg border-0 bg-surface-container hover:bg-surface-container-high text-on-surface cursor-pointer"
+          data-lightbox-close
+          type="button"
+          aria-label="ปิด"
+        >
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="relative bg-surface">
+        <img
+          alt=""
+          class="portfolio-lightbox-image block mx-auto w-auto h-auto max-w-full"
+          data-lightbox-image
+        />
+        <button
+          class="absolute left-3 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center w-11 h-11 rounded-full border-0 bg-surface/90 text-on-surface shadow-sm hover:bg-surface cursor-pointer"
+          data-lightbox-prev
+          type="button"
+          aria-label="ภาพก่อนหน้า"
+        >
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <button
+          class="absolute right-3 top-1/2 -translate-y-1/2 z-10 inline-flex items-center justify-center w-11 h-11 rounded-full border-0 bg-surface/90 text-on-surface shadow-sm hover:bg-surface cursor-pointer"
+          data-lightbox-next
+          type="button"
+          aria-label="ภาพถัดไป"
+        >
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+      <div class="px-5 py-4 flex flex-col gap-3">
+        <div class="flex items-center justify-between gap-3">
+          <p class="font-label-lg text-label-lg text-on-surface" data-lightbox-caption></p>
+          <p class="font-label-md text-label-md text-on-surface-variant whitespace-nowrap" data-lightbox-counter></p>
+        </div>
+        <div class="flex gap-2 overflow-x-auto pb-1" data-lightbox-thumbs></div>
+      </div>
+    </div>
+  </dialog>
 </section>
 
 <script>
+  type GalleryImage = { src: string; alt: string; caption: string };
+  type GalleryData = {
+    title: string;
+    client: string;
+    images: GalleryImage[];
+  };
+
   const root = document.querySelector("[data-portfolio]");
   if (root) {
-    const buttons = root.querySelectorAll<HTMLButtonElement>(".portfolio-filter");
-    const cards = root.querySelectorAll<HTMLElement>(".portfolio-card");
+    const dialog = root.querySelector<HTMLDialogElement>("[data-portfolio-lightbox]");
+    const titleEl = root.querySelector("[data-lightbox-title]");
+    const clientEl = root.querySelector("[data-lightbox-client]");
+    const imageEl = root.querySelector<HTMLImageElement>("[data-lightbox-image]");
+    const captionEl = root.querySelector("[data-lightbox-caption]");
+    const counterEl = root.querySelector("[data-lightbox-counter]");
+    const thumbsEl = root.querySelector("[data-lightbox-thumbs]");
+    const prevBtn = root.querySelector<HTMLButtonElement>("[data-lightbox-prev]");
+    const nextBtn = root.querySelector<HTMLButtonElement>("[data-lightbox-next]");
+    const closeBtn = root.querySelector<HTMLButtonElement>("[data-lightbox-close]");
 
-    function applyFilter(filter: string) {
-      cards.forEach((card) => {
-        const match = filter === "all" || card.dataset.category === filter;
-        card.classList.toggle("hidden", !match);
-      });
-      buttons.forEach((button) => {
-        const active = button.dataset.filter === filter;
-        button.setAttribute("aria-selected", String(active));
-        button.classList.toggle("bg-surface", active);
-        button.classList.toggle("text-primary", active);
-        button.classList.toggle("font-bold", active);
-        button.classList.toggle("shadow-sm", active);
-        button.classList.toggle("text-on-surface-variant", !active);
+    let gallery: GalleryData | null = null;
+    let currentIndex = 0;
+
+    function fitLightboxImage() {
+      if (!imageEl) return;
+      const isPortrait = imageEl.naturalWidth > 0 && imageEl.naturalHeight > imageEl.naturalWidth;
+      imageEl.classList.toggle("is-portrait", isPortrait);
+      if (isPortrait) {
+        const stageWidth = imageEl.parentElement?.clientWidth || imageEl.clientWidth || 800;
+        const landscapeHeight = stageWidth * (9 / 16);
+        imageEl.style.height = `${Math.round(landscapeHeight * 1.12)}px`;
+      } else {
+        imageEl.style.height = "";
+      }
+    }
+
+    function renderLightbox() {
+      if (!gallery || !imageEl || !titleEl || !clientEl || !captionEl || !counterEl || !thumbsEl) {
+        return;
+      }
+
+      const image = gallery.images[currentIndex];
+      titleEl.textContent = gallery.title;
+      clientEl.textContent = gallery.client;
+      clientEl.classList.toggle("hidden", !gallery.client);
+      imageEl.src = image.src;
+      imageEl.alt = image.alt;
+      captionEl.textContent = image.caption;
+      counterEl.textContent = `${currentIndex + 1} / ${gallery.images.length}`;
+      fitLightboxImage();
+
+      const showNav = gallery.images.length > 1;
+      prevBtn?.classList.toggle("hidden", !showNav);
+      nextBtn?.classList.toggle("hidden", !showNav);
+      thumbsEl.classList.toggle("hidden", !showNav);
+
+      thumbsEl.replaceChildren();
+      gallery.images.forEach((item, index) => {
+        const thumb = document.createElement("button");
+        thumb.type = "button";
+        thumb.className =
+          "relative h-14 w-20 shrink-0 overflow-hidden rounded-md ring-2 ring-transparent border-0 p-0 cursor-pointer";
+        if (index === currentIndex) {
+          thumb.classList.add("ring-primary");
+        }
+        thumb.setAttribute("aria-label", item.caption);
+        thumb.setAttribute("aria-current", index === currentIndex ? "true" : "false");
+
+        const img = document.createElement("img");
+        img.src = item.src;
+        img.alt = "";
+        img.className = "h-full w-full object-cover";
+        thumb.append(img);
+        thumb.addEventListener("click", () => {
+          currentIndex = index;
+          renderLightbox();
+        });
+        thumbsEl.append(thumb);
       });
     }
 
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => applyFilter(button.dataset.filter ?? "all"));
+    function openGallery(card: HTMLElement, index: number) {
+      const raw = card.dataset.gallery;
+      if (!raw || !dialog) return;
+      gallery = JSON.parse(raw) as GalleryData;
+      currentIndex = Math.min(Math.max(index, 0), gallery.images.length - 1);
+      renderLightbox();
+      if (!dialog.open) dialog.showModal();
+    }
+
+    function step(delta: number) {
+      if (!gallery) return;
+      currentIndex = (currentIndex + delta + gallery.images.length) % gallery.images.length;
+      renderLightbox();
+    }
+
+    root.addEventListener("click", (event) => {
+      const trigger = (event.target as HTMLElement).closest<HTMLElement>("[data-gallery-open]");
+      if (!trigger || !root.contains(trigger)) return;
+      const card = trigger.closest<HTMLElement>(".portfolio-card");
+      if (!card) return;
+      openGallery(card, Number(trigger.dataset.galleryIndex ?? "0"));
+    });
+
+    imageEl?.addEventListener("load", fitLightboxImage);
+    prevBtn?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      step(-1);
+    });
+    nextBtn?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      step(1);
+    });
+    closeBtn?.addEventListener("click", () => dialog?.close());
+
+    dialog?.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    dialog?.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        step(-1);
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        step(1);
+      }
     });
   }
 </script>
+
+<style>
+  .portfolio-lightbox {
+    border: 0;
+  }
+
+  .portfolio-lightbox::backdrop {
+    background: rgb(28 27 27 / 0.72);
+    backdrop-filter: blur(4px);
+  }
+
+  .portfolio-lightbox-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .portfolio-lightbox-image.is-portrait {
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+</style>

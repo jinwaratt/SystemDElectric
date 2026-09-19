@@ -3,7 +3,7 @@ const brands = [
   { name: "Schneider Electric", src: "/images/brands/schneider.png" },
   { name: "ABB", src: "/images/brands/abb.png" },
   { name: "Siemens", src: "/images/brands/siemens.png" },
-  { name: "Mitsubishi", src: "/images/brands/mitsubishi.png" },
+  { name: "Mitsubishi", src: "/images/brands/mitsubishi.png", imgClass: "max-h-16" },
   { name: "Panasonic", src: "/images/brands/panasonic.png" },
   { name: "Eaton", src: "/images/brands/eaton.png" },
   { name: "Thai Yazaki", src: "/images/brands/thai-yazaki.png" },
@@ -22,7 +22,7 @@ const brands = [
           <div class="px-4 py-5 rounded-lg bg-surface flex items-center justify-center shadow-xs hover:shadow-sm transition-all min-h-24">
             <img
               alt={brand.name}
-              class="max-h-10 w-full object-contain"
+              class:list={["w-full object-contain", brand.imgClass ?? "max-h-10"]}
               loading="lazy"
               src={brand.src}
             />
