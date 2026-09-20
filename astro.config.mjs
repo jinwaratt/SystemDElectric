@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://system-d-electric.vercel.app',
+  site: 'https://systemdelectrical.com',
   vite: {
     plugins: [tailwindcss()],
   },

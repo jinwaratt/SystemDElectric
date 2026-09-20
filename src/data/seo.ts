@@ -32,7 +32,7 @@ export const faqs = [
   {
     question: "สำนักงานอยู่ที่ไหน และติดต่อได้อย่างไร?",
     answer:
-      "สำนักงานอยู่ที่ 21/11 หมู่ที่ 5 ตำบลทวีวัฒนา อำเภอไทรน้อย จังหวัดนนทบุรี เปิดจันทร์–เสาร์ 08:00–17:30 น. โทร 081-931-5831 หรือ LINE 0819315831 เพื่อขอคำปรึกษาวิศวกรและใบเสนอราคา",
+      "สำนักงานอยู่ที่ 21/11 หมู่ที่ 5 ตำบลทวีวัฒนา อำเภอไทรน้อย จังหวัดนนทบุรี 11150 เปิดจันทร์–เสาร์ 08:00–17:30 น. โทร 081-931-5831 หรือ LINE 0819315831 เพื่อขอคำปรึกษาวิศวกรและใบเสนอราคา",
   },
 ] as const;
 
@@ -76,6 +76,7 @@ export function buildJsonLd() {
           streetAddress: site.streetAddress,
           addressLocality: site.addressLocality,
           addressRegion: site.addressRegion,
+          postalCode: site.postalCode,
           addressCountry: site.addressCountry,
         },
         openingHoursSpecification: {
