@@ -4,6 +4,8 @@ Single-page website for **บริษัท ซิสเท็มดี อี�
 
 Built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/) from the Stitch design in `stitch_system_d_electrical_industrial_website/`.
 
+Live site: [https://system-d-electric.vercel.app/](https://system-d-electric.vercel.app/)
+
 ## Requirements
 
 - Node.js 22.12 or newer
@@ -19,12 +21,13 @@ Built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.
 
 ## Update site content
 
-Most copy and contact details live in one place. After edits, run `npm run dev` (or push to `main` if Vercel is connected) to see the change.
+Most copy and contact details live in one place. After edits, run `npm run dev` locally, or push to `main` to update the live site.
 
 | What to change | File |
 | --- | --- |
 | Company name, phone, LINE, email, address, hours | [`src/data/site.ts`](src/data/site.ts) |
 | Project portfolio | [`src/data/portfolio.ts`](src/data/portfolio.ts) |
+| FAQ / SEO copy | [`src/data/seo.ts`](src/data/seo.ts) |
 | Partner logos | [`src/components/Brands.astro`](src/components/Brands.astro) and `public/images/brands/` |
 | Hero photo / company logo | `public/images/hero.jpg`, `public/images/logo.png` |
 
@@ -58,42 +61,41 @@ Cards show every image. Clicking a card opens a gallery (arrows, thumbnails, key
 ```text
 src/
   components/     Page sections (header through footer)
-  data/site.ts    Contact details, nav, brand copy
+  data/site.ts    Contact details, nav, brand copy, canonical URL
+  data/seo.ts     FAQ answers and JSON-LD / llms.txt
   data/portfolio.ts   Real project records and gallery images
   layouts/        Document shell, fonts, SEO
-  pages/          Single route: /
+  pages/          Routes: `/`, `/robots.txt`, `/sitemap.xml`, `/llms.txt`
   styles/         Tailwind theme tokens
 public/images/    Logo, hero, brand marks, portfolio photos
 stitch_system_d_electrical_industrial_website/   Original Stitch design
 ```
 
-Page order on `/`: Hero → Services → Process → Audience → Portfolio → Stats → Brands → CTA → Footer.
+Page order on `/`: Hero → Services → Process → Audience → Portfolio → About → Brands → FAQ → CTA → Footer.
 
-## Deploy on Vercel (free tier)
+The production build includes `/sitemap-index.xml` and `/robots.txt`. Search engines and AI crawlers are allowed.
 
-1. Create the dedicated project Gmail first. Use it for Vercel, Cloudflare, and the future domain.
-2. Import this repository into Vercel.
-3. Framework preset: Astro. Output: `dist`. Node.js: 22.
-4. Confirm the `*.vercel.app` URL loads before attaching a custom domain.
+## Live site (Vercel)
 
-Vercel rebuilds on every push to `main`.
+The site is already deployed from this GitHub repository:
 
-## Custom domain: Cloudflare + Vercel
+**https://system-d-electric.vercel.app/**
 
-Cloudflare is DNS/CDN/proxy only. Vercel stays the origin.
+Vercel rebuilds on every push to `main`. Framework preset: Astro. Output: `dist`. Node.js: 22.
 
-1. Register the domain and add it to Cloudflare. Keep Cloudflare nameservers.
-2. In Vercel, add both the apex (`systemdelectrical.com`) and `www`. Let Vercel issue certificates.
-3. In Cloudflare DNS, add the records Vercel shows (`A` / `CNAME`) and set them to **Proxied** (orange cloud).
-4. SSL/TLS in Cloudflare: **Full (strict)**. Do not use Flexible — that causes HTTPS redirect loops with Vercel.
-5. Optional: enable Always Use HTTPS. If a loop still appears, turn off Automatic HTTPS Rewrites.
-6. Pick one canonical host (apex or `www`) and 301 the other in **either** Cloudflare **or** Vercel, not both.
+## Custom domain on Vercel
 
-After nameservers propagate, wait for the Vercel certificate, then test HTTP→HTTPS and apex/`www`.
+When you attach a custom domain later:
+
+1. Register the domain (any registrar). In Vercel, add both the apex (`systemdelectrical.com`) and `www`.
+2. At the registrar, add the DNS records Vercel shows (`A` for the apex, `CNAME` for `www`). Let Vercel issue certificates.
+3. Pick one canonical host (apex or `www`) and 301 the other in Vercel.
+
+After DNS propagates, wait for the Vercel certificate, then test HTTP→HTTPS and apex/`www`.
 
 ## Client handoff (non-technical)
 
-Do **not** transfer the GitHub repository. Ownership is the dedicated Gmail login (Vercel + Cloudflare + domain). Give the client that username, password, and 2FA recovery codes in a separate offline note — never inside the zip.
+Do **not** transfer the GitHub repository. Ownership is the dedicated Gmail login (Vercel + domain). Give the client that username, password, and 2FA recovery codes in a separate offline note — never inside the zip.
 
 ### Zip packaging
 

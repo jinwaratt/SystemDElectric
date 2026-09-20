@@ -145,4 +145,60 @@ export const projects: PortfolioProject[] = [
       },
     ],
   },
+  {
+    id: "thai-optical-entrance",
+    title: "โครงการปรับปรุงทางเข้า",
+    client: "บริษัท ไทยออพติคอล กรุ๊ป จำกัด (มหาชน)",
+    body: "งานปรับปรุงระบบไฟฟ้าบริเวณทางเข้า ครอบคลุมระบบแสงสว่าง โคมไฟหลังคา และตู้ควบคุม",
+    images: [
+      {
+        src: "/images/portfolio/thai-optical-entrance/sign.jpg",
+        alt: "ป้ายทางเข้าบริษัท ไทยออพติคอล กรุ๊ป จำกัด (มหาชน)",
+        caption: "ป้ายทางเข้า",
+      },
+      {
+        src: "/images/portfolio/thai-optical-entrance/exterior.jpg",
+        alt: "ระบบแสงสว่างภายนอกทางเข้าบริษัท ไทยออพติคอล กรุ๊ป",
+        caption: "ระบบแสงสว่างภายนอก",
+      },
+      {
+        src: "/images/portfolio/thai-optical-entrance/canopy-lights.jpg",
+        alt: "โคมไฟใต้หลังคาทางเข้าบริษัท ไทยออพติคอล กรุ๊ป",
+        caption: "โคมไฟใต้หลังคา",
+      },
+      {
+        src: "/images/portfolio/thai-optical-entrance/control-panel.jpg",
+        alt: "ตู้ควบคุมระบบไฟฟ้าทางเข้าบริษัท ไทยออพติคอล กรุ๊ป",
+        caption: "ตู้ควบคุม",
+      },
+    ],
+  },
+  {
+    id: "isuzu-gateway-lightning",
+    title: "โครงการงานระบบป้องกันฟ้าผ่า",
+    client: "บริษัท อีซูซุมอเตอร์ (ประเทศไทย) จำกัด",
+    body: "งานระบบป้องกันฟ้าผ่าโรงงานเกตเวย์ นิคมอุตสาหกรรมเกตเวย์ซิตี้ ครอบคลุมเสาล่อฟ้า สายลงดิน และการทดสอบระบบดิน",
+    images: [
+      {
+        src: "/images/portfolio/isuzu-gateway-lightning/air-terminal.jpg",
+        alt: "เสาล่อฟ้าโรงงานอีซูซุ เกตเวย์ซิตี้",
+        caption: "เสาล่อฟ้า",
+      },
+      {
+        src: "/images/portfolio/isuzu-gateway-lightning/installation.jpg",
+        alt: "ติดตั้งระบบป้องกันฟ้าผ่าที่ผนังอาคารโรงงานอีซูซุ",
+        caption: "งานติดตั้งสายลงดิน",
+      },
+      {
+        src: "/images/portfolio/isuzu-gateway-lightning/roof-work.jpg",
+        alt: "งานติดตั้งระบบป้องกันฟ้าผ่าบนหลังคาโรงงานอีซูซุ",
+        caption: "งานบนหลังคา",
+      },
+      {
+        src: "/images/portfolio/isuzu-gateway-lightning/earth-test.jpg",
+        alt: "ทดสอบความต้านทานดินระบบป้องกันฟ้าผ่าโรงงานอีซูซุ",
+        caption: "ทดสอบระบบดิน",
+      },
+    ],
+  },
 ];
