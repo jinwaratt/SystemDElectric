@@ -1,4 +1,5 @@
 ---
+import Icon from "./Icon.astro";
 import { navItems, site } from "../data/site";
 ---
 
@@ -14,6 +15,8 @@ import { navItems, site } from "../data/site";
           src={site.logo}
           width="130"
           height="80"
+          fetchpriority="low"
+          decoding="async"
         />
         <div class="flex flex-col min-w-0 overflow-hidden">
           <span class="font-headline-md text-[14px] sm:text-[16px] md:text-[22px] 2xl:text-[26px] text-primary leading-tight tracking-tight font-extrabold truncate">
@@ -47,7 +50,7 @@ import { navItems, site } from "../data/site";
         class="hidden md:flex items-center gap-2 px-3 2xl:px-4 py-2 2xl:py-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors font-label-lg text-label-lg text-on-surface whitespace-nowrap"
         href={`tel:${site.phoneTel}`}
       >
-        <span class="material-symbols-outlined text-[20px] text-primary">call</span>
+        <Icon name="call" class="text-[20px] text-primary" />
         <span>{site.phoneDisplay}</span>
       </a>
       <a
@@ -73,7 +76,8 @@ import { navItems, site } from "../data/site";
         aria-expanded="false"
         aria-label="เปิดเมนู"
       >
-        <span class="material-symbols-outlined" data-menu-icon>menu</span>
+        <Icon name="menu" class="text-[24px]" data-menu-icon="menu" />
+        <Icon name="close" class="text-[24px] hidden" data-menu-icon="close" />
       </button>
     </div>
   </div>
@@ -97,7 +101,7 @@ import { navItems, site } from "../data/site";
         class="mt-2 inline-flex items-center justify-center gap-2 px-3 py-3 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg md:hidden"
         href={`tel:${site.phoneTel}`}
       >
-        <span class="material-symbols-outlined text-[18px]">call</span>
+        <Icon name="call" class="text-[18px]" />
         {site.phoneDisplay}
       </a>
     </nav>
@@ -107,7 +111,8 @@ import { navItems, site } from "../data/site";
 <script>
   const toggle = document.getElementById("menu-toggle");
   const panel = document.getElementById("mobile-nav");
-  const icon = toggle?.querySelector("[data-menu-icon]");
+  const menuIcon = toggle?.querySelector('[data-menu-icon="menu"]');
+  const closeIcon = toggle?.querySelector('[data-menu-icon="close"]');
   const links = document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]");
 
   function setOpen(open: boolean) {
@@ -115,7 +120,8 @@ import { navItems, site } from "../data/site";
     panel.classList.toggle("hidden", !open);
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "ปิดเมนู" : "เปิดเมนู");
-    if (icon) icon.textContent = open ? "close" : "menu";
+    menuIcon?.classList.toggle("hidden", open);
+    closeIcon?.classList.toggle("hidden", !open);
   }
 
   function setActive(href: string) {

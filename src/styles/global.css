@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-headline-xl: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-headline-xl-mobile: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-headline-lg: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-headline-lg-mobile: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-headline-md: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-headline-sm: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-body-lg: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-body-md: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-body-sm: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-label-lg: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-label-md: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
-  --font-label-sm: "Inter", "Noto Sans Thai", ui-sans-serif, system-ui, sans-serif;
+@theme inline {
+  --font-sans: var(--font-inter), var(--font-noto-sans-thai);
+  --font-headline-xl: var(--font-inter), var(--font-noto-sans-thai);
+  --font-headline-xl-mobile: var(--font-inter), var(--font-noto-sans-thai);
+  --font-headline-lg: var(--font-inter), var(--font-noto-sans-thai);
+  --font-headline-lg-mobile: var(--font-inter), var(--font-noto-sans-thai);
+  --font-headline-md: var(--font-inter), var(--font-noto-sans-thai);
+  --font-headline-sm: var(--font-inter), var(--font-noto-sans-thai);
+  --font-body-lg: var(--font-inter), var(--font-noto-sans-thai);
+  --font-body-md: var(--font-inter), var(--font-noto-sans-thai);
+  --font-body-sm: var(--font-inter), var(--font-noto-sans-thai);
+  --font-label-lg: var(--font-inter), var(--font-noto-sans-thai);
+  --font-label-md: var(--font-inter), var(--font-noto-sans-thai);
+  --font-label-sm: var(--font-inter), var(--font-noto-sans-thai);
+}
 
+@theme {
   --text-headline-xl: 48px;
   --text-headline-xl--line-height: 56px;
   --text-headline-xl--letter-spacing: -0.02em;
@@ -218,17 +220,18 @@
   }
 }
 
-.material-symbols-outlined {
-  font-family: "Material Symbols Outlined";
-  font-weight: 400;
-  font-style: normal;
-  font-size: 24px;
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-size: 24px;
+}
+
+.icon svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  display: block;
 }

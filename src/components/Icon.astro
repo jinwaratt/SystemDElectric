@@ -1,0 +1,24 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"span"> {
+  name: string;
+}
+
+const { name, class: className, ...rest } = Astro.props;
+const aliases: Record<string, string> = {
+  expand_more: "keyboard_arrow_down",
+};
+const file = aliases[name] ?? name;
+const modules = import.meta.glob<string>("../icons/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+const svg = modules[`../icons/${file}.svg`];
+if (!svg) {
+  throw new Error(`Unknown icon: ${name}`);
+}
+---
+
+<span class:list={["icon", className]} aria-hidden="true" set:html={svg} {...rest} />

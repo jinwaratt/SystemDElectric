@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
@@ -8,6 +8,26 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  fonts: [
+    {
+      name: 'Inter',
+      cssVariable: '--font-inter',
+      provider: fontProviders.google(),
+      weights: ['100 900'],
+      styles: ['normal'],
+      subsets: ['latin'],
+      fallbacks: [],
+    },
+    {
+      name: 'Noto Sans Thai',
+      cssVariable: '--font-noto-sans-thai',
+      provider: fontProviders.google(),
+      weights: ['100 900'],
+      styles: ['normal'],
+      subsets: ['thai', 'latin'],
+      fallbacks: ['sans-serif'],
+    },
+  ],
   integrations: [
     sitemap({
       changefreq: 'weekly',

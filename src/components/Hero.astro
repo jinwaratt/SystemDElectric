@@ -1,4 +1,6 @@
 ---
+import Icon from "./Icon.astro";
+import { getHeroImage } from "../data/heroImage";
 import { site } from "../data/site";
 
 const checks = [
@@ -7,16 +9,22 @@ const checks = [
   "ประกอบ ติดตั้ง และบำรุงรักษาตู้สวิตช์บอร์ด MDB / DB",
   "ตรวจรับรองความปลอดภัยประจำปีและ As-Built ครบวงจร",
 ];
+
+const hero = await getHeroImage();
 ---
 
 <section class="relative w-full overflow-clip min-h-[36rem] md:min-h-[42rem] 2xl:min-h-[48rem] bg-background" id="home">
   <img
     alt="สำนักงาน บริษัท ซิสเท็มดี อีเล็คทริคอล จำกัด"
     class="hero-media absolute inset-0 w-full h-full object-cover"
-    src="/images/hero.jpg"
-    width="1920"
-    height="1080"
+    src={hero.src}
+    srcset={hero.srcSet.attribute}
+    sizes="100vw"
+    width={hero.attributes.width}
+    height={hero.attributes.height}
     fetchpriority="high"
+    loading="eager"
+    decoding="async"
   />
   <div
     class="absolute inset-0 hidden md:block bg-gradient-to-r from-[#fdf8f8] from-0% via-[#fdf8f8]/92 via-45% to-transparent to-100%"
@@ -49,9 +57,7 @@ const checks = [
         {
           checks.map((item) => (
             <div class="flex items-center gap-2.5">
-              <span class="material-symbols-outlined text-primary text-[20px] shrink-0 font-bold">
-                check_circle
-              </span>
+              <Icon name="check_circle" class="text-primary text-[20px] font-bold" />
               <span class="font-body-md text-body-md text-on-surface">{item}</span>
             </div>
           ))
@@ -62,7 +68,7 @@ const checks = [
           class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-primary hover:bg-tertiary text-on-primary font-label-lg text-label-lg transition-all shadow-md active:scale-[0.98]"
           href={`tel:${site.phoneTel}`}
         >
-          <span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+          <Icon name="phone_in_talk" class="text-[20px]" />
           <span>โทรปรึกษาวิศวกร (ฟรี)</span>
         </a>
       </div>

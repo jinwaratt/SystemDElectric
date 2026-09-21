@@ -24,6 +24,7 @@ const brands = [
               alt={brand.name}
               class:list={["w-full object-contain", brand.imgClass ?? "max-h-10"]}
               loading="lazy"
+              decoding="async"
               src={brand.src}
             />
           </div>

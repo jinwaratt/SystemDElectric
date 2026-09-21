@@ -9,7 +9,10 @@ const css = await readFile(join(cssDir, cssFile), "utf8");
 
 const needles = {
   primary: css.includes("#00602b"),
-  thaiFont: css.includes("Noto Sans Thai") || html.includes("Noto+Sans+Thai"),
+  thaiFont:
+    css.includes("Noto Sans Thai") ||
+    html.includes("Noto+Sans+Thai") ||
+    html.includes("--font-noto-sans-thai"),
   gutter: css.includes("--spacing-gutter") || css.includes("1.5rem"),
   scrollMargin: css.includes("scroll-margin-top"),
   home: html.includes('id="home"'),

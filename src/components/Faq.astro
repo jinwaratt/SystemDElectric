@@ -1,4 +1,5 @@
 ---
+import Icon from "./Icon.astro";
 import { faqs } from "../data/seo";
 ---
 
@@ -23,9 +24,10 @@ import { faqs } from "../data/seo";
           <details class="group rounded-xl bg-surface shadow-xs border border-outline-variant open:shadow-sm">
             <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-headline-sm text-headline-sm text-on-surface [&::-webkit-details-marker]:hidden">
               <span>{faq.question}</span>
-              <span class="material-symbols-outlined text-primary shrink-0 transition-transform group-open:rotate-180">
-                expand_more
-              </span>
+              <Icon
+                name="expand_more"
+                class="text-primary shrink-0 transition-transform group-open:rotate-180"
+              />
             </summary>
             <p class="px-5 pb-5 font-body-md text-body-md text-on-surface-variant">
               {faq.answer}

@@ -1,5 +1,7 @@
 ---
+import { Font } from "astro:assets";
 import "../styles/global.css";
+import { getHeroImage } from "../data/heroImage";
 import { buildJsonLd } from "../data/seo";
 import { site } from "../data/site";
 
@@ -13,6 +15,7 @@ const origin = site.url.replace(/\/$/, "");
 const canonical = new URL(Astro.url.pathname, `${origin}/`).href;
 const ogImage = new URL(site.ogImage, `${origin}/`).href;
 const jsonLd = buildJsonLd();
+const hero = await getHeroImage();
 const robots =
   "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 ---
@@ -22,6 +25,15 @@ const robots =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="preload"
+      as="image"
+      href={hero.src}
+      imagesrcset={hero.srcSet.attribute}
+      imagesizes="100vw"
+      type="image/webp"
+      fetchpriority="high"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -56,16 +68,8 @@ const robots =
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={site.ogImageAlt} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+Thai:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
-      rel="stylesheet"
-    />
+    <Font cssVariable="--font-inter" />
+    <Font cssVariable="--font-noto-sans-thai" />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>

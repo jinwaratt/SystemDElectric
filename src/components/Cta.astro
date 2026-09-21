@@ -1,4 +1,5 @@
 ---
+import Icon from "./Icon.astro";
 import { site } from "../data/site";
 ---
 
@@ -22,11 +23,11 @@ import { site } from "../data/site";
         </p>
         <div class="flex flex-wrap items-center gap-6 mt-4 text-on-surface font-body-md text-body-md">
           <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-primary text-[20px]">verified</span>
+            <Icon name="verified" class="text-primary text-[20px]" />
             <span>วิศวกร กว. ควบคุมทุกโครงการ</span>
           </div>
           <div class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+            <Icon name="schedule" class="text-primary text-[20px]" />
             <span>ตอบกลับรวดเร็ว</span>
           </div>
         </div>
@@ -36,7 +37,7 @@ import { site } from "../data/site";
           class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-secondary-container hover:bg-secondary text-on-secondary font-label-lg text-label-lg transition-all shadow-sm hover:shadow-md active:scale-[0.98] text-center"
           href={`tel:${site.phoneTel}`}
         >
-          <span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+          <Icon name="phone_in_talk" class="text-[20px]" />
           <span>โทรปรึกษาวิศวกรด่วน</span>
         </a>
       </div>

@@ -1,4 +1,5 @@
 ---
+import Icon from "./Icon.astro";
 import { site } from "../data/site";
 ---
 
@@ -13,6 +14,8 @@ import { site } from "../data/site";
             src={site.logo}
             width="280"
             height="56"
+            loading="lazy"
+            decoding="async"
           />
           <span class="font-headline-sm text-headline-sm text-on-primary tracking-tight">{site.name}</span>
         </div>
@@ -27,11 +30,11 @@ import { site } from "../data/site";
         </span>
         <address class="not-italic flex flex-col gap-2 font-body-md text-body-md text-on-tertiary-container">
           <p class="flex items-start gap-2">
-            <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">location_on</span>
+            <Icon name="location_on" class="text-[20px] text-secondary-fixed" />
             <span>{site.address}</span>
           </p>
           <p class="flex items-start gap-2">
-            <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">mail</span>
+            <Icon name="mail" class="text-[20px] text-secondary-fixed" />
             <span class="flex flex-col gap-1">
               {
                 site.emails.map((email) => (
@@ -43,7 +46,7 @@ import { site } from "../data/site";
             </span>
           </p>
           <p class="flex items-center gap-2">
-            <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">call</span>
+            <Icon name="call" class="text-[20px] text-secondary-fixed" />
             <a class="hover:text-on-primary transition-colors" href={`tel:${site.phoneTel}`}>
               Tel: {site.phoneDisplay}
             </a>
@@ -55,6 +58,8 @@ import { site } from "../data/site";
               src={site.lineIcon}
               width="20"
               height="20"
+              loading="lazy"
+              decoding="async"
             />
             <a class="hover:text-on-primary transition-colors" href={site.lineUrl} rel="noopener" target="_blank">
               LINE: {site.lineId}
@@ -66,7 +71,7 @@ import { site } from "../data/site";
         <span class="font-label-lg text-label-lg uppercase tracking-wider text-secondary-fixed">เวลาทำการ</span>
         <div class="flex flex-col gap-2 font-body-md text-body-md text-on-tertiary-container">
           <div class="flex items-start gap-2">
-            <span class="material-symbols-outlined text-[20px] text-secondary-fixed shrink-0">schedule</span>
+            <Icon name="schedule" class="text-[20px] text-secondary-fixed" />
             <div>
               <p class="font-label-lg text-label-lg text-on-primary">จันทร์ - เสาร์:</p>
               <p>{site.weekdayHours}</p>
