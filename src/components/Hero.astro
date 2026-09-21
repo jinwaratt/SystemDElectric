@@ -15,7 +15,7 @@ const hero = await getHeroImage();
 
 <section class="relative w-full overflow-clip min-h-[36rem] md:min-h-[42rem] 2xl:min-h-[48rem] bg-background" id="home">
   <img
-    alt="สำนักงาน บริษัท ซิสเท็มดี อีเล็คทริคอล จำกัด"
+    alt={site.ogImageAlt}
     class="hero-media absolute inset-0 w-full h-full object-cover"
     src={hero.src}
     srcset={hero.srcSet.attribute}
@@ -57,7 +57,7 @@ const hero = await getHeroImage();
         {
           checks.map((item) => (
             <div class="flex items-center gap-2.5">
-              <Icon name="check_circle" class="text-primary text-[20px] font-bold" />
+              <Icon name="check_circle" class="text-primary text-[20px]" />
               <span class="font-body-md text-body-md text-on-surface">{item}</span>
             </div>
           ))

@@ -9,11 +9,8 @@ const css = await readFile(join(cssDir, cssFile), "utf8");
 
 const needles = {
   primary: css.includes("#00602b"),
-  thaiFont:
-    css.includes("Noto Sans Thai") ||
-    html.includes("Noto+Sans+Thai") ||
-    html.includes("--font-noto-sans-thai"),
-  gutter: css.includes("--spacing-gutter") || css.includes("1.5rem"),
+  thaiFont: html.includes("--font-noto-sans-thai"),
+  gutter: css.includes("--spacing-gutter"),
   scrollMargin: css.includes("scroll-margin-top"),
   home: html.includes('id="home"'),
   services: html.includes('id="services"'),
@@ -22,14 +19,15 @@ const needles = {
   contact: html.includes('id="contact"'),
   menu: html.includes("menu-toggle"),
   portfolio: html.includes("data-portfolio"),
-  filter: html.includes("data-filter"),
   lang: html.includes('lang="th"'),
   og: html.includes("og:image"),
 };
 
 console.log(needles);
 console.log("css bytes", css.length);
-const missing = Object.entries(needles).filter(([, ok]) => !ok).map(([key]) => key);
+const missing = Object.entries(needles)
+  .filter(([, ok]) => !ok)
+  .map(([key]) => key);
 if (missing.length) {
   console.error("Missing:", missing.join(", "));
   process.exit(1);

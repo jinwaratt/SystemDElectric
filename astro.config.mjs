@@ -24,7 +24,7 @@ export default defineConfig({
       provider: fontProviders.google(),
       weights: ['100 900'],
       styles: ['normal'],
-      subsets: ['thai', 'latin'],
+      subsets: ['thai'],
       fallbacks: ['sans-serif'],
     },
   ],

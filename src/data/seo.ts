@@ -97,7 +97,7 @@ export function buildJsonLd() {
           {
             "@type": "ContactPoint",
             telephone: site.phoneE164,
-            email: site.email,
+            email: site.emails[0],
             contactType: "customer service",
             areaServed: "TH",
             availableLanguage: ["Thai"],

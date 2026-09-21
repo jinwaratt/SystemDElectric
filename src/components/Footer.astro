@@ -1,6 +1,8 @@
 ---
 import Icon from "./Icon.astro";
 import { site } from "../data/site";
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="w-full bg-primary text-on-primary pt-space-xl pb-space-lg">
@@ -83,7 +85,7 @@ import { site } from "../data/site";
     <div
       class="pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md font-label-md text-label-md text-on-tertiary-container"
     >
-      <p>© 2025 {site.legalName} สงวนลิขสิทธิ์ทุกประการ ตามมาตรฐานวิศวกรรมแห่งประเทศไทย (EIT)</p>
+      <p>© {year} {site.legalName} สงวนลิขสิทธิ์ทุกประการ ตามมาตรฐานวิศวกรรมแห่งประเทศไทย (EIT)</p>
       <div class="flex items-center gap-space-md">
         <a class="hover:text-on-primary transition-colors" href="#about">มาตรฐานความปลอดภัย</a>
       </div>

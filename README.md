@@ -27,9 +27,14 @@ Most copy and contact details live in one place. After edits, run `npm run dev` 
 | --- | --- |
 | Company name, phone, LINE, email, address, hours | [`src/data/site.ts`](src/data/site.ts) |
 | Project portfolio | [`src/data/portfolio.ts`](src/data/portfolio.ts) |
+| Services | [`src/data/services.ts`](src/data/services.ts) |
+| Workflow steps | [`src/data/process.ts`](src/data/process.ts) |
 | FAQ / SEO copy | [`src/data/seo.ts`](src/data/seo.ts) |
 | Partner logos | [`src/components/Brands.astro`](src/components/Brands.astro) and `public/images/brands/` |
-| Hero photo / company logo | `public/images/hero.jpg`, `public/images/logo.png` |
+| Homepage hero photo | `src/assets/hero.jpg` |
+| Social preview photo / company logo | `public/images/hero.jpg`, `public/images/logo.png` |
+
+If you change the hero photo, replace **both** `src/assets/hero.jpg` (the image on the homepage) and `public/images/hero.jpg` (Facebook / LINE / Open Graph). Keep the same picture in both places.
 
 Update the domain in both [`astro.config.mjs`](astro.config.mjs) (`site`) and `src/data/site.ts` (`url`) if it changes, so the sitemap and Open Graph tags stay correct.
 
@@ -60,14 +65,15 @@ Cards show every image. Clicking a card opens a gallery (arrows, thumbnails, key
 
 ```text
 src/
-  components/     Page sections (header through footer)
-  data/site.ts    Contact details, nav, brand copy, canonical URL
-  data/seo.ts     FAQ answers and JSON-LD / llms.txt
-  data/portfolio.ts   Real project records and gallery images
+  assets/         Homepage hero photo (optimized at build)
+  components/     Page sections (header through footer) plus Icon.astro
+  data/           Contact, portfolio, services, process, FAQ / SEO
+  icons/          Inline SVG icons
   layouts/        Document shell, fonts, SEO
   pages/          Routes: `/`, `/robots.txt`, `/sitemap.xml`, `/llms.txt`
   styles/         Tailwind theme tokens
-public/images/    Logo, hero, brand marks, portfolio photos
+public/images/    Logo, Open Graph hero, brand marks, portfolio photos
+vercel.json       Redirects from www and the Vercel URL to the apex domain
 stitch_system_d_electrical_industrial_website/   Original Stitch design
 ```
 
