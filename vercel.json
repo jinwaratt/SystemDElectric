@@ -1,0 +1,26 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.systemdelectrical.com"
+        }
+      ],
+      "destination": "https://systemdelectrical.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "system-d-electric.vercel.app"
+        }
+      ],
+      "destination": "https://systemdelectrical.com/:path*",
+      "permanent": true
+    }
+  ]
+}

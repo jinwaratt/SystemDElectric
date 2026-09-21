@@ -4,7 +4,7 @@ Single-page website for **บริษัท ซิสเท็มดี อี�
 
 Built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/) from the Stitch design in `stitch_system_d_electrical_industrial_website/`.
 
-Live site: [https://system-d-electric.vercel.app/](https://system-d-electric.vercel.app/)
+Live site: [https://systemdelectrical.com/](https://systemdelectrical.com/)
 
 ## Requirements
 
@@ -77,21 +77,27 @@ The production build includes `/sitemap-index.xml` and `/robots.txt`. Search eng
 
 ## Live site (Vercel)
 
-The site is already deployed from this GitHub repository:
+The site is already deployed from this GitHub repository. Production URL:
 
-**https://system-d-electric.vercel.app/**
+**https://systemdelectrical.com/**
+
+`https://system-d-electric.vercel.app` and `www.systemdelectrical.com` redirect to the apex domain.
 
 Vercel rebuilds on every push to `main`. Framework preset: Astro. Output: `dist`. Node.js: 22.
 
-## Custom domain on Vercel
+## Custom domain DNS (Z.com)
 
-When you attach a custom domain later:
+DNS is pointed at Vercel from Z.com (`ns-a1.cloud.z.com`, `ns-a3.cloud.z.com`, `ns-a4.cloud.z.com`):
 
-1. Register the domain (any registrar). In Vercel, add both the apex (`systemdelectrical.com`) and `www`.
-2. At the registrar, add the DNS records Vercel shows (`A` for the apex, `CNAME` for `www`). Let Vercel issue certificates.
-3. Pick one canonical host (apex or `www`) and 301 the other in Vercel.
+| Type | Name | Value |
+| --- | --- | --- |
+| `A` | `@` | `216.198.79.1` |
+| `A` | `@` | `64.29.17.1` |
+| `CNAME` | `www` | `0479fcc9f332d563.vercel-dns-017.com` |
 
-After DNS propagates, wait for the Vercel certificate, then test HTTP→HTTPS and apex/`www`.
+`www` and the `*.vercel.app` URL redirect to https://systemdelectrical.com/.
+
+Alternatively, at Z.com change nameservers to `ns1.vercel-dns.com` and `ns2.vercel-dns.com` and Vercel will manage DNS.
 
 ## Client handoff (non-technical)
 
